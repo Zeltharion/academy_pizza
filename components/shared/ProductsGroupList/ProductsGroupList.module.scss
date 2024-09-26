@@ -5,6 +5,6 @@
 	}
 
 	.productsGroupList__list {
-		@apply grid grid-cols-3 gap-[50px];
+		@apply grid md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-[50px];
 	}
 }
