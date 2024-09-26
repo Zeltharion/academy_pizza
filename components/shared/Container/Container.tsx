@@ -1,5 +1,6 @@
 import { cn } from '@/lib/utils';
 import React from 'react';
+import s from './Container.module.scss'
 
 interface Props {
 	className?: string;
@@ -7,7 +8,7 @@ interface Props {
 
 export const Container: React.FC<React.PropsWithChildren<Props>> = ({ className, children }) => {
 	return (
-		<div className={cn('mx-auto max-w-[1280px]', className)}>
+		<div className={cn(s.container, className)}>
 			{children}
 		</div>
 	);
