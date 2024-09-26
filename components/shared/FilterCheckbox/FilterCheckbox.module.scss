@@ -1,0 +1,11 @@
+.filterCheckbox {
+	@apply flex items-center space-x-2;
+
+	.filterCheckbox__checkbox {
+		@apply rounded-[8px] w-6 h-6;
+	}	
+
+	.filterCheckbox__label {
+		@apply leading-none cursor-pointer flex-1;
+	}
+}

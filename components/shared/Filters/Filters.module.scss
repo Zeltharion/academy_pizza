@@ -1,0 +1,18 @@
+.filters {
+	
+	.checkboxes {
+		@apply flex flex-col gap-4;
+	}
+
+	.priceRange {
+		@apply mt-5 border-y border-y-neutral-100 py-6 pb-7;
+
+		.priceRange__title {
+			@apply font-bold mb-3;
+		}
+
+		.priceRange__inputs {
+			@apply flex gap-3 mb-5;
+		}
+	}
+}
