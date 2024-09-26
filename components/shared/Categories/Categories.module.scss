@@ -1,0 +1,11 @@
+.categories {
+	@apply inline-flex gap-1 bg-gray-50 p-1 rounded-2xl;
+
+	.categoryItem {
+		@apply flex items-center font-bold h-11 rounded-2xl px-5;
+
+		&.active {
+			@apply bg-white shadow-md shadow-gray-200 text-primary;
+		}
+	}
+}
