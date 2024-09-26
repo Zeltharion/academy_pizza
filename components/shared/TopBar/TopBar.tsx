@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils"
 import s from './TopBar.module.scss'
-import { Categories, Container, SortPopup } from ".."
+import { Categories, Container, SortPopup } from "@/components/shared"
 
 interface ITopBar {
 	className?: string
