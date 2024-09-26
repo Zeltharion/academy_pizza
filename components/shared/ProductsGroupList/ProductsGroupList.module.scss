@@ -1,0 +1,10 @@
+.productsGroupList {
+
+	.productsGroupList__title {
+		@apply font-extrabold mb-5;
+	}
+
+	.productsGroupList__list {
+		@apply grid grid-cols-3 gap-[50px];
+	}
+}

@@ -1,0 +1,18 @@
+.productCard {
+
+	.productCard__image {
+		@apply flex justify-center p-6 bg-secondary rounded-lg h-[260px];
+	}
+
+	.productCard__title {
+		@apply mb-1 mt-3 font-bold;
+	}
+
+	.productCard__igredients {
+		@apply text-sm text-gray-400;
+	}
+
+	.productCard__footer {
+		@apply flex justify-between items-center mt-4;
+	}
+}
