@@ -54,8 +54,18 @@ export default function Home() {
             <div className="flex flex-col gap-16">
               <ProductsGroupList 
                 title="Пиццы"
-                categoryId={0}
                 items={pizzaItems}
+                categoryId={1}
+              />
+              <ProductsGroupList 
+                title="Комбо"
+                items={pizzaItems}
+                categoryId={2}
+              />
+              <ProductsGroupList 
+                title="Закуски"
+                items={pizzaItems}
+                categoryId={3}
               />
             </div>
           </div>
