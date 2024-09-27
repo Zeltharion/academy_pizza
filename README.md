@@ -11,3 +11,8 @@
 ```bash
 npm i && npm run dev
 ```
+
+## Prisma studio:
+```bash
+npm run prisma:studio
+```
