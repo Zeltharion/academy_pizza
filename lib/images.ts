@@ -31,8 +31,8 @@ export const productImage = {
 	dodster: '/assets/images/products/dodster.png',
 	irishCappuccino: '/assets/images/products/irishCappuccino.png',
 	latte: '/assets/images/products/latte.png',
-	omletWithHamAndMushrooms: '/assets/images/products/omletWithHamAndMushrooms.png',
-	omletWithPepperoni: '/assets/images/products/omletWithPepperoni.png',
+	omeletteWithHamAndMushrooms: '/assets/images/products/omeletteWithHamAndMushrooms.png',
+	omeletteWithPepperoni: '/assets/images/products/omeletteWithPepperoni.png',
 	oreoCookieMilkshake: '/assets/images/products/oreoCookieMilkshake.png',
 	spicyDodster: '/assets/images/products/spicyDodster.png',
 }
