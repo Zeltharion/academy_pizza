@@ -18,10 +18,10 @@ export const FilterCheckbox: React.FC<IFilterCheckbox> = ({
 				checked={checked}
 				value={value}
 				className={s.filterCheckbox__checkbox}
-				id={`checkbox-${name}-${String(value)}`}
+				id={`checkbox-${String(name)}-${String(value)}`}
 			/>
 			<label
-				htmlFor={`checkbox-${name}-${String(value)}`}
+				htmlFor={`checkbox-${String(name)}-${String(value)}`}
 				className={s.filterCheckbox__label}>
 				{text}
 			</label>
