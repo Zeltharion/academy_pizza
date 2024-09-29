@@ -1,5 +1,8 @@
 .filtersCheckboxGroup {
-	
+	.filtersCheckboxGroup__title {
+		@apply font-bold mb-3;
+	}
+
 	.filterCheckboxes {
 		@apply flex flex-col gap-4 max-h-96 pr-2 overflow-auto;
 	}
@@ -7,4 +10,20 @@
 	.showAllItems {
 		@apply border-t border-t-neutral-100 mt-4;
 	}
+}
+
+.filtersCheckboxGroup__skeleton {
+	@apply flex gap-2;
+
+	.filtersCheckboxGroup__skeleton__checkbox {
+		@apply w-6 h-6 mb-4 rounded-[8px];
+	}
+
+	.filtersCheckboxGroup__skeleton__text {
+		@apply w-full flex-1 h-6 mb-4 rounded-[8px];
+	}
+}
+
+.filtersCheckboxGroup__skeleton__moreBtn {
+	@apply w-28 h-6 mb-4 rounded-[8px];
 }
