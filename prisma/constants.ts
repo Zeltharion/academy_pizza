@@ -1,4 +1,4 @@
-import { ingredientImage, pizzaImage, productImage } from "./images";
+import { ingredientImage, pizzaImage, productImage } from "../lib/images";
 
 export const categories = [
 	{ name: 'Пиццы' },
@@ -99,12 +99,12 @@ export const ingredients = [
 export const products = [
 	{
 		name: 'Омлет с ветчиной и грибами',
-		imageUrl: productImage.omletWithHamAndMushrooms,
+		imageUrl: productImage.omeletteWithHamAndMushrooms,
 		categoryId: 2,
 	},
 	{
 		name: 'Омлет с пепперони',
-		imageUrl: productImage.omletWithPepperoni,
+		imageUrl: productImage.omeletteWithPepperoni,
 		categoryId: 2,
 	},
 	{
