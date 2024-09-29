@@ -3,7 +3,7 @@ import React from 'react'
 import Image from 'next/image'
 import { Button } from '../../ui'
 import { ArrowRight, ShoppingCart, User } from 'lucide-react'
-import { Container } from '..'
+import { Container } from '@/components/shared'
 import s from './Header.module.scss'
 
 interface IHeader {

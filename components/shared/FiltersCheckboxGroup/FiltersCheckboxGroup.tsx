@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils"
 import { Input } from "@/components/ui"
 import s from './FiltersCheckboxGroup.module.scss'
 import { IFiltersCheckboxGroup } from "./FiltersCheckboxGroup.types"
-import { FilterCheckbox } from ".."
+import { FilterCheckbox } from "@/components/shared"
 import { useState } from "react"
 
 export const FiltersCheckboxGroup: React.FC<IFiltersCheckboxGroup> = ({
