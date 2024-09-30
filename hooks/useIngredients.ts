@@ -1,20 +1,14 @@
 import { Api } from "@/services/apiClient";
 import { Ingredient } from "@prisma/client"
-import { useState, useEffect } from "react";
-import { useSet } from "react-use";
+import { useEffect, useState } from "react"
 
-interface IReturnFilterIngredients {
-	ingredients: Ingredient[];
-	isLoading: boolean;
-	selectedIngredients: Set<string>;
-	toggleId: (id: string) => void
-}
-
-export const useFilterIngredients = (): IReturnFilterIngredients => {
+/**
+ * Fetches all ingredients from the API and returns them in an array.
+ * @returns an array of Ingredient objects and a boolean indicating if the data is loading
+ */
+export const useIngredients = () => {
 	const [ingredients, setIngredients] = useState<Ingredient[]>([])
 	const [isLoading, setIsLoading] = useState(false);
-
-	const [selectedIngredients, { toggle }] = useSet(new Set<string>([]));
 
 	useEffect(() => {
 		async function fetchIngredients() {
@@ -32,5 +26,5 @@ export const useFilterIngredients = (): IReturnFilterIngredients => {
 		fetchIngredients();
 	}, [])
 
-	return { ingredients, isLoading, toggleId: toggle, selectedIngredients }
+	return { ingredients, isLoading }
 }
