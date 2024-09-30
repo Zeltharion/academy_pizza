@@ -22,7 +22,7 @@ export default async function Home() {
           className="font-extrabold" />
       </Container>
 
-      <TopBar />
+      <TopBar categories={categories.filter((category) => category.products.length > 0)}/>
 
       <Container className="my-10">
         <div className="flex gap-[80px]">
