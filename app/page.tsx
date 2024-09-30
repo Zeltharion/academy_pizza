@@ -1,36 +1,17 @@
 import { Container, Filters, ProductsGroupList, Title, TopBar } from "@/components/shared";
+import { prisma } from "@/prisma/prismaClient";
 
-export default function Home() {
-  const pizzaItems = [
-    {
-      id: 1,
-      name: "Пепперони",
-      imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE7D612FC7B7FCA5BE822752BEE1E5.avif',
-      price: 500,
-      items: [{price: 500}],
+export default async function Home() {
+  const categories = await prisma.category.findMany({
+    include: {
+      products: {
+        include: {
+          variants: true,
+          ingredients: true,
+        }
+      },
     },
-    {
-      id: 2,
-      name: "Маргарита",
-      imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE7D612FC7B7FCA5BE822752BEE1E5.avif',
-      price: 500,
-      items: [{price: 500}],
-    },
-    {
-      id: 3,
-      name: "Мексиканская",
-      imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE7D612FC7B7FCA5BE822752BEE1E5.avif',
-      price: 500,
-      items: [{price: 500}],
-    },
-    {
-      id: 4,
-      name: "Гавайская",
-      imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE7D612FC7B7FCA5BE822752BEE1E5.avif',
-      price: 500,
-      items: [{price: 500}],
-    }
-  ];
+  });
 
   return (
     <>
@@ -52,21 +33,16 @@ export default function Home() {
 
           <div className="flex-1">
             <div className="flex flex-col gap-16">
-              <ProductsGroupList 
-                title="Пиццы"
-                items={pizzaItems}
-                categoryId={1}
-              />
-              <ProductsGroupList 
-                title="Комбо"
-                items={pizzaItems}
-                categoryId={2}
-              />
-              <ProductsGroupList 
-                title="Закуски"
-                items={pizzaItems}
-                categoryId={3}
-              />
+              {categories.map((category) => (
+                category.products.length > 0 && (
+                  <ProductsGroupList
+                    key={category.id}
+                    title={category.name}
+                    categoryId={category.id}
+                    items={category.products}
+                  />
+                )
+              ))}
             </div>
           </div>
 
