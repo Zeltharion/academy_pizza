@@ -15,3 +15,5 @@ export * from './ProductCard/ProductCard'
 export * from './ProductsGroupList/ProductsGroupList'
 export * from './ProductImage/ProductImage'
 export * from './ProductVariantSelector/ProductVariantSelector'
+
+export * from './modals'
