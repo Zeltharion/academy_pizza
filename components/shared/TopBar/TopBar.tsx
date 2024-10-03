@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils"
+import { cn } from "@/shared/lib/utils"
 import s from './TopBar.module.scss'
 import { Categories, Container, SortPopup } from "@/components/shared"
 import { Category } from "@prisma/client"

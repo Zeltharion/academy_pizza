@@ -1,13 +1,13 @@
 'use client'
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/shared/lib/utils"
 import s from './SearchInput.module.scss'
 import { Search } from "lucide-react"
 import { useRef, useState } from "react"
 import { useClickAway, useDebounce } from "react-use"
 import Link from "next/link"
 import Image from 'next/image'
-import { Api } from "@/services/apiClient"
+import { Api } from "@/shared/services/apiClient"
 import { Product } from "@prisma/client"
 
 interface ISearchInput {

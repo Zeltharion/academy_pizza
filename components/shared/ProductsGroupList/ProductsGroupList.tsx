@@ -2,11 +2,11 @@
 
 import React, { useEffect, useRef } from 'react'
 import { useIntersection } from 'react-use'
-import { cn } from "@/lib/utils"
+import { cn } from "@/shared/lib/utils"
 import { IProductsGroupList } from "./ProductsGroupList.types"
 import s from './ProductsGroupList.module.scss'
 import { ProductCard, Title } from "@/components/shared"
-import { useCategoryStore } from '@/store/category'
+import { useCategoryStore } from '@/shared/store/category'
 
 export const ProductsGroupList: React.FC<IProductsGroupList> = ({
 	title,

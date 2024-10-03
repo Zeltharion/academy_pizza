@@ -5,7 +5,7 @@ type Variant = {
 }
 
 export interface IProductVariantSelector {
-	items: readonly Variant[];
+	variants: readonly Variant[];
 	onClick?: (value: Variant['value']) => void;
 	selectedValue?: Variant['value'];
 	className?: string;

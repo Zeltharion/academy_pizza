@@ -2,8 +2,8 @@
 
 import { Input, RangeSlider } from "@/components/ui"
 import { FiltersCheckboxGroup, Title } from "@/components/shared"
-import { useIngredients, useFilters, useQueryFilters } from "@/hooks"
-import { cn } from "@/lib/utils"
+import { useIngredients, useFilters, useQueryFilters } from "@/shared/hooks"
+import { cn } from "@/shared/lib/utils"
 import s from './Filters.module.scss'
 
 interface IFiltersProps {

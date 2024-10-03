@@ -1,18 +1,18 @@
 'use client'
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/shared/lib/utils"
 import { IProductVariantSelector } from "./ProductVariantSelector.types"
 import s from './ProductVariantSelector.module.scss'
 
 export const ProductVariantSelector: React.FC<IProductVariantSelector> = ({
-	items,
+	variants,
 	onClick,
 	selectedValue,
 	className,
 }) => {
 	return (
 		<div className={cn(s.productVariantSelector, className)}>
-			{items.map((item) => (
+			{variants.map((item) => (
 				<button
 					key={item.value}
 					onClick={() => onClick?.(item.value)}

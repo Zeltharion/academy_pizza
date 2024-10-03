@@ -1,6 +1,6 @@
 'use client'
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/shared/lib/utils"
 import { Input, Skeleton } from "@/components/ui"
 import s from './FiltersCheckboxGroup.module.scss'
 import { IFiltersCheckboxGroup } from "./FiltersCheckboxGroup.types"
