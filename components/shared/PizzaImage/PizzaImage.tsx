@@ -1,13 +1,8 @@
-import { cn } from '@/lib/utils'
-import s from './ProductImage.module.scss'
+import { cn } from '@/shared/lib/utils'
+import s from './PizzaImage.module.scss'
+import { IPizzaImage } from './PizzaImage.types'
 
-interface IProductImage {
-	src: string;
-	size: number;
-	className?: string;
-}
-
-export const ProductImage: React.FC<IProductImage> = ({ src, size, className }) => {
+export const PizzaImage: React.FC<IPizzaImage> = ({ src, size, className }) => {
 	return (
 		<div className={cn(s.productImage, className)}>
 			<img
