@@ -1,5 +1,5 @@
 export const ingredientImage = {
-	brynzaCubes: '/assets/images/ingredients/brynza-cubes.png',
+	brynzaCubes: '/assets/images/ingredients/brynzaCubes.png',
 	champignons: '/assets/images/ingredients/champignons.png',
 	cheddarAndParmesanCheeses: '/assets/images/ingredients/cheddarAndParmesanCheeses.png',
 	cheeseSide: '/assets/images/ingredients/cheeseSide.png',
