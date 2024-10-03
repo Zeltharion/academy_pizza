@@ -1,4 +1,4 @@
-type Variant = {
+export type Variant = {
 	name: string;
 	value: string;
 	disabled?: boolean;
@@ -7,6 +7,6 @@ type Variant = {
 export interface IProductVariantSelector {
 	variants: readonly Variant[];
 	onClick?: (value: Variant['value']) => void;
-	selectedValue?: Variant['value'];
+	value?: Variant['value'];
 	className?: string;
 }

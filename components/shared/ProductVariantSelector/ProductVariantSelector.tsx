@@ -7,7 +7,7 @@ import s from './ProductVariantSelector.module.scss'
 export const ProductVariantSelector: React.FC<IProductVariantSelector> = ({
 	variants,
 	onClick,
-	selectedValue,
+	value,
 	className,
 }) => {
 	return (
@@ -17,7 +17,7 @@ export const ProductVariantSelector: React.FC<IProductVariantSelector> = ({
 					key={item.value}
 					onClick={() => onClick?.(item.value)}
 					className={cn(s.productVariantSelector__button, {
-							[s.active]: item.value === selectedValue,
+							[s.active]: item.value === value,
 							[s.disabled]: item.disabled,
 						})}>
 					{item.name}
