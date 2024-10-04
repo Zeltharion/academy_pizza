@@ -13,7 +13,10 @@ export * from './FiltersCheckboxGroup/FiltersCheckboxGroup'
 
 export * from './ProductCard/ProductCard'
 export * from './ProductsGroupList/ProductsGroupList'
-export * from './ProductImage/ProductImage'
+export * from './PizzaImage/PizzaImage'
 export * from './ProductVariantSelector/ProductVariantSelector'
+export * from './ProductForm/ProductForm'
+export * from './PizzaForm/PizzaForm'
+export * from './IngredientCard/IngredientCard'
 
 export * from './modals'
