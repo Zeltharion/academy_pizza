@@ -1,4 +1,4 @@
-import { Container, ProductImage, ProductVariantSelector, Title } from "@/components/shared";
+import { Container, PizzaImage, ProductVariantSelector, Title } from "@/components/shared";
 import { prisma } from "@/prisma/prismaClient";
 import { notFound } from "next/navigation";
 import s from './productIdPage.module.scss'
@@ -9,12 +9,12 @@ export default async function ProductPage({ params: { id } }: { params: { id: st
 
 	return (
 		<Container className={s.productCard}>
-			<div className="flex flex-1">
-				<ProductImage
+			<div className={s.productCard__wrapper}>
+				<PizzaImage
 					src={product.imageUrl}
 					size={40}
 				/>
-				<div className="w-[490px] bg-gray-50 p-7">
+				<div className={s.productCard__info}>
 					<Title
 						text={product.name}
 						size="md"
@@ -22,8 +22,8 @@ export default async function ProductPage({ params: { id } }: { params: { id: st
 					/>
 					<p className="text-gray-400">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 					<ProductVariantSelector
-						selectedValue="1"
-						items={[
+						value="1"
+						variants={[
 							{
 								name: 'Маленькая',
 								value: '1',
