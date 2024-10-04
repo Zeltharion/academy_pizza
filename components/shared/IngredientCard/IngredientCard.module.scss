@@ -1,0 +1,19 @@
+.ingredientCard {
+	@apply flex items-center flex-col p-1 rounded-md w-32 text-center relative cursor-pointer shadow-md bg-white;
+
+	&.active {
+		@apply border border-primary;
+	}
+
+	.ingredientCard__activeIcon {
+		@apply absolute top-2 right-2 text-primary;
+	}
+
+	.ingredientCard__name {
+		@apply text-xs mb-1;
+	}
+
+	.ingredientCard__price {
+		@apply font-bold;
+	}
+}
