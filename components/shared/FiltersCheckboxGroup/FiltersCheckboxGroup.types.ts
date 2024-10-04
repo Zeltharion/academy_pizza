@@ -5,11 +5,13 @@ type Item = IFilterCheckbox;
 export interface IFiltersCheckboxGroup {
 	title: string;
 	items: Item[];
-	defaultItems: Item[];
+	defaultItems?: Item[];
 	limit?: number;
+	loading?: boolean;
 	searchInputPlaceholder?: string;
-	onChange?: (values: string[]) => void;
-	defaultValue?: string[];
+	onClickCheckbox?: (id: string) => void;
+	selectedValues?: Set<string>
 	className?: string;
+	name?: string;
 }
 

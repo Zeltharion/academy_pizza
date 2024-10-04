@@ -2,11 +2,11 @@
 
 import React, { useEffect, useRef } from 'react'
 import { useIntersection } from 'react-use'
-import { cn } from "@/lib/utils"
+import { cn } from "@/shared/lib/utils"
 import { IProductsGroupList } from "./ProductsGroupList.types"
 import s from './ProductsGroupList.module.scss'
 import { ProductCard, Title } from "@/components/shared"
-import { useCategoryStore } from '@/store/category'
+import { useCategoryStore } from '@/shared/store/category'
 
 export const ProductsGroupList: React.FC<IProductsGroupList> = ({
 	title,
@@ -27,7 +27,7 @@ export const ProductsGroupList: React.FC<IProductsGroupList> = ({
 		if (intersection?.isIntersecting) {
 			setActiveCategoryId(categoryId);
 		}
-	}, [categoryId, intersection?.isIntersecting, title]);
+	}, [categoryId, intersection?.isIntersecting, title, setActiveCategoryId]);
 
 	return (
 		<section className={cn(s.productsGroupList, className)}
@@ -45,7 +45,7 @@ export const ProductsGroupList: React.FC<IProductsGroupList> = ({
 						id={product.id}
 						name={product.name}
 						imageUrl={product.imageUrl}
-						price={product.items[0].price}
+						price={product.variants[0].price}
 					/>
 				))}
 			</div>

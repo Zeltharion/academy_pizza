@@ -1,7 +1,9 @@
+import { IProductWithRelations } from "@/types/prisma"
+
 export interface IProductsGroupList {
 	title: string
 	categoryId: number
-	items: any[]
+	items: IProductWithRelations[]
 	listClassName?: string
 	className?: string
 }

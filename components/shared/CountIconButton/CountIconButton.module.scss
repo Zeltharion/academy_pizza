@@ -1,0 +1,11 @@
+.countIconButton {
+	@apply p-0 hover:bg-primary hover:text-white disabled:bg-white disabled:border-gray-400 disabled:text-gray-400;
+
+	&.countIconButton__sm {
+		@apply w-[30px] h-[30px] rounded-[10px];
+	}
+
+	&.countIconButton__lg {
+		@apply w-[38px] h-[38px] rounded-md;
+	}
+}

@@ -1,0 +1,32 @@
+.cartDrawer__content {
+	@apply flex flex-col justify-between pb-0 bg-gray-100;
+
+	.cartDrawer__items {
+		@apply flex flex-col flex-1 -mx-6 mt-5 overflow-auto gap-2 rounded-md;
+	}
+
+	.cartDrawer__footer {
+		@apply -mx-6 flex-col flex bg-white p-8;
+	
+		.cartDrawer__footer__totalPrice {
+			@apply flex mb-4;
+	
+			.cartDrawer__footer__totalPrice__label {
+				@apply flex flex-1 text-lg text-neutral-500;
+			}
+	
+			.cartDrawer__footer__totalPrice__line {
+				@apply flex-1 border-b border-dashed border-b-neutral-200 relative -top-1 mx-2;
+			}
+	
+			.cartDrawer__footer__totalPrice__price {
+				@apply font-bold text-lg;
+			}
+		}
+	
+		.cartDrawer__footer__button {
+			@apply w-full h-12 text-base;
+		}
+	}
+}
+

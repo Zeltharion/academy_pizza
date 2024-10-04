@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils"
+import { cn } from "@/shared/lib/utils"
 import s from './SortPopup.module.scss'
 import { ArrowUpDown } from "lucide-react"
 

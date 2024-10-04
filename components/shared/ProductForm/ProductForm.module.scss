@@ -1,0 +1,14 @@
+.pizzaForm {
+	@apply flex flex-1;
+	.pizzaForm__image {
+		@apply flex items-center justify-center flex-1 relative w-full;
+
+		img {
+			@apply relative left-2 top-2 transition-all duration-300 z-10 w-[350px] h-[350px];
+		}
+	}
+
+	.pizzaForm__button {
+		@apply h-[55px] px-10 text-base rounded-[18px] w-full mt-10;
+	}
+}

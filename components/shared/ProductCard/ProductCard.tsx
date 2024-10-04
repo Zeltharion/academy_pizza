@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { cn } from "@/lib/utils"
+import { cn } from "@/shared/lib/utils"
 import { Title } from "@/components/shared"
 import { IProductCard } from "./ProductCard.types"
 import s from './ProductCard.module.scss'
