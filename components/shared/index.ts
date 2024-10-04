@@ -18,7 +18,12 @@ export * from './ProductVariantSelector/ProductVariantSelector'
 export * from './ProductForm/ProductForm'
 export * from './PizzaForm/PizzaForm'
 export * from './IngredientCard/IngredientCard'
+
 export * from './CartButton/CartButton'
 export * from './CartDrawer/CartDrawer'
+export * from './CartDrawerItem/CartDrawerItem'
+export * from './CartItemDetails'
+export * from './CountButtonContainer/CountButtonContainer'
+export * from './CountIconButton/CountIconButton'
 
 export * from './modals'
