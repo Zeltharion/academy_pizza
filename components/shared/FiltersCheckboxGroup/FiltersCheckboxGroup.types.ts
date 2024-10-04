@@ -11,7 +11,6 @@ export interface IFiltersCheckboxGroup {
 	searchInputPlaceholder?: string;
 	onClickCheckbox?: (id: string) => void;
 	selectedValues?: Set<string>
-	defaultValue?: string[];
 	className?: string;
 	name?: string;
 }

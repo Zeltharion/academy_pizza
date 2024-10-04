@@ -2,7 +2,7 @@ import { cn } from '@/shared/lib/utils'
 import React from 'react'
 import Image from 'next/image'
 import { Button } from '@/components/ui'
-import { ArrowRight, ShoppingCart, User } from 'lucide-react'
+import { User } from 'lucide-react'
 import { CartButton, Container, SearchInput } from '@/components/shared'
 import s from './Header.module.scss'
 import Link from 'next/link'
@@ -38,7 +38,7 @@ export const Header: React.FC<IHeader> = ({ classname }) => {
 						<User size={16} />
 						Войти
 					</Button>
-					<CartButton/>
+					<CartButton />
 				</div>
 			</Container>
 		</header>

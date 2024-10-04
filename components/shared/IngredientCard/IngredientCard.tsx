@@ -19,6 +19,7 @@ export const IngredientCard: React.FC<IIngredientCard> = ({
 				src={imageUrl}
 				width={110}
 				height={110}
+				alt=""
 			/>
 			<span className={s.ingredientCard__name}>{name}</span>
 			<span className={s.ingredientCard__price}>{price} ₽</span>

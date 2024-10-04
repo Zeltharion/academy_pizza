@@ -1,11 +1,12 @@
 'use client'
 
+import { useState } from "react"
 import { cn } from "@/shared/lib/utils"
 import { Input, Skeleton } from "@/components/ui"
-import s from './FiltersCheckboxGroup.module.scss'
-import { IFiltersCheckboxGroup } from "./FiltersCheckboxGroup.types"
 import { FilterCheckbox } from "@/components/shared"
-import { useState } from "react"
+import { IFiltersCheckboxGroup } from "./FiltersCheckboxGroup.types"
+import s from './FiltersCheckboxGroup.module.scss'
+
 export const FiltersCheckboxGroup: React.FC<IFiltersCheckboxGroup> = ({
 	title,
 	items,
@@ -14,7 +15,6 @@ export const FiltersCheckboxGroup: React.FC<IFiltersCheckboxGroup> = ({
 	loading = false,
 	searchInputPlaceholder = "Поиск...",
 	onClickCheckbox,
-	defaultValue,
 	selectedValues,
 	className,
 	name,

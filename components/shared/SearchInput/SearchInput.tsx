@@ -1,14 +1,14 @@
 'use client'
 
-import { cn } from "@/shared/lib/utils"
-import s from './SearchInput.module.scss'
-import { Search } from "lucide-react"
 import { useRef, useState } from "react"
-import { useClickAway, useDebounce } from "react-use"
-import Link from "next/link"
 import Image from 'next/image'
-import { Api } from "@/shared/services/apiClient"
+import Link from "next/link"
 import { Product } from "@prisma/client"
+import { useClickAway, useDebounce } from "react-use"
+import { cn } from "@/shared/lib/utils"
+import { Search } from "lucide-react"
+import { Api } from "@/shared/services"
+import s from './SearchInput.module.scss'
 
 interface ISearchInput {
 	className?: string
@@ -50,6 +50,7 @@ export const SearchInput: React.FC<ISearchInput> = ({ className }) => {
 					placeholder="Найти..."
 					className={s.searchInput__input}
 					onFocus={() => setFocused(true)}
+					spellCheck={false}
 					value={searchQuery}
 					onChange={(e) => setSearchQuery(e.target.value)}
 				/>
