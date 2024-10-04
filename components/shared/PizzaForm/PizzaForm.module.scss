@@ -1,0 +1,31 @@
+.pizzaForm {
+	@apply flex flex-1;
+	
+	.pizzaForm__info {
+		@apply w-[490px] bg-gray-50 p-7;
+
+		.pizzaForm__title {
+			@apply font-extrabold mb-1;
+		}
+
+		.pizzaForm__details {
+			@apply text-gray-400;
+		}
+
+		.pizzaForm__variants {
+			@apply flex flex-col gap-3 mt-5;
+		}
+
+		.pizzaForm__ingredientsWrapper {
+			@apply bg-gray-100 mt-5 p-5 rounded-md h-[420px] overflow-auto;
+
+			.pizzaForm__ingredients {
+				@apply grid grid-cols-3 gap-3;
+			}
+		}
+	}
+
+	.pizzaForm__button {
+		@apply h-[55px] px-10 text-base rounded-[18px] w-full mt-5;
+	}
+}
