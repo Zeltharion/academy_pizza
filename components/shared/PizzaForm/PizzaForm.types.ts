@@ -5,6 +5,7 @@ export interface IPizzaForm {
 	name: string;
 	ingredients: Ingredient[];
 	variants: ProductVariant[];
-	onClickAddToCart?: VoidFunction;
+	loading?: boolean;
+	onSubmit: (variantId: number, ingredients: number[]) => void;
 	className?: string
 }

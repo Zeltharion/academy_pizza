@@ -1,6 +1,8 @@
 export interface IProductForm {
 	imageUrl: string;
 	name: string;
-	onClickAdd?: VoidFunction;
+	price: number;
+	loading?: boolean;
+	onSubmit?: VoidFunction;
 	className?: string
 }

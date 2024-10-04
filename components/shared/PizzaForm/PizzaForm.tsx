@@ -3,9 +3,8 @@
 import { PizzaSize, PizzaType, pizzaTypes } from "@/shared/constants/pizza"
 import { IngredientCard, PizzaImage, ProductVariantSelector, Title } from "@/components/shared"
 import { Button } from "@/components/ui"
-import { getPizzaDetails } from "@/shared/lib"
+import { getPizzaDetails, cn } from "@/shared/lib"
 import { usePizzaOptions } from "@/shared/hooks"
-import { cn } from "@/shared/lib/utils"
 import { IPizzaForm } from "./PizzaForm.types"
 import s from './PizzaForm.module.scss'
 
@@ -14,7 +13,8 @@ export const PizzaForm: React.FC<IPizzaForm> = ({
 	name,
 	ingredients,
 	variants,
-	onClickAddToCart,
+	onSubmit,
+	loading,
 	className,
 }) => {
 	const {
@@ -22,16 +22,18 @@ export const PizzaForm: React.FC<IPizzaForm> = ({
 		type,
 		selectedIngredients,
 		availableSizes,
+		currentVariantId,
 		addIngredient,
 		setSize,
 		setType,
 	} = usePizzaOptions(variants)
-	
+
 	const { pizzaDetails, totalPrice } = getPizzaDetails(type, size, selectedIngredients, variants, ingredients);
 
 	const handleOnClickAddToCart = () => {
-		onClickAddToCart?.();
-		console.log({ size, type, selectedIngredients });
+		if (currentVariantId) {
+			onSubmit(currentVariantId, Array.from(selectedIngredients));
+		}
 	}
 
 	return (
@@ -70,7 +72,10 @@ export const PizzaForm: React.FC<IPizzaForm> = ({
 					</div>
 				</div>
 
-				<Button className={s.pizzaForm__button} onClick={handleOnClickAddToCart}>
+				<Button
+					className={s.pizzaForm__button}
+					onClick={handleOnClickAddToCart}
+					loading={loading}>
 					Добавить в корзину за {totalPrice} ₽
 				</Button>
 			</div>
