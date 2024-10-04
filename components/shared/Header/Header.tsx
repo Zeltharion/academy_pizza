@@ -3,7 +3,7 @@ import React from 'react'
 import Image from 'next/image'
 import { Button } from '@/components/ui'
 import { ArrowRight, ShoppingCart, User } from 'lucide-react'
-import { Container, SearchInput } from '@/components/shared'
+import { CartButton, Container, SearchInput } from '@/components/shared'
 import s from './Header.module.scss'
 import Link from 'next/link'
 
@@ -38,21 +38,7 @@ export const Header: React.FC<IHeader> = ({ classname }) => {
 						<User size={16} />
 						Войти
 					</Button>
-
-					<Button className='group relative'>
-						<b>520 ₽</b>
-						<span className='h-full w-[1px] bg-white/30 mx-3' />
-						<div className='flex items-center gap-1 transition duration-300 group-hover:opacity-0'>
-							<ShoppingCart
-								className='relative'
-								strokeWidth={2}
-								size={16} />
-							<b>3</b>
-						</div>
-						<ArrowRight
-							className='right-5 absolute transition duration-300 -translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0'
-							size={20} />
-					</Button>
+					<CartButton/>
 				</div>
 			</Container>
 		</header>
