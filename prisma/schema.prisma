@@ -25,7 +25,7 @@ model User {
     email            String            @unique
     password         String
     role             UserRole          @default(USER)
-    verified         DateTime           
+    verified         DateTime
     cart             Cart?
     orders           Order[]
     verificationCode VerificationCode?
@@ -65,7 +65,7 @@ model ProductVariant {
     pizzaType Int?
     product   Product    @relation(fields: [productId], references: [id])
     productId Int
-    cart      CartItem[]
+    cartItems CartItem[]
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
@@ -84,12 +84,12 @@ model Ingredient {
 }
 
 model Cart {
-    id         Int        @id @default(autoincrement())
-    user       User?      @relation(fields: [userId], references: [id])
-    userId     Int?       @unique
-    token      String
-    totalAmout Int        @default(0)
-    items      CartItem[]
+    id          Int        @id @default(autoincrement())
+    user        User?      @relation(fields: [userId], references: [id])
+    userId      Int?       @unique
+    token       String
+    totalAmount Int        @default(0)
+    items       CartItem[]
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
@@ -102,25 +102,25 @@ model CartItem {
     cart             Cart           @relation(fields: [cartId], references: [id])
     cartId           Int
     ingredients      Ingredient[]
-    quantity         Int
+    quantity         Int            @default(1)
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 }
 
 model Order {
-    id         Int         @id @default(autoincrement())
-    paymentId  String?
-    user       User?       @relation(fields: [userId], references: [id])
-    userId     Int?        @unique
-    token      String
-    totalAmout Int
-    status     OrderStatus
-    items      Json?
-    fullName   String
-    email      String
-    address    String
-    comment    String
+    id          Int         @id @default(autoincrement())
+    paymentId   String?
+    user        User?       @relation(fields: [userId], references: [id])
+    userId      Int?        @unique
+    token       String
+    totalAmount Int
+    status      OrderStatus
+    items       Json?
+    fullName    String
+    email       String
+    address     String
+    comment     String
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt

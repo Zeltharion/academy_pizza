@@ -83,12 +83,12 @@ async function up() {
 			{
 				token: 'cartUser1',
 				userId: 1,
-				totalAmout: 0,
+				totalAmount: 0,
 			},
 			{
 				token: 'cartUser2',
 				userId: 2,
-				totalAmout: 0,
+				totalAmount: 0,
 			},
 		]
 	})
