@@ -10,6 +10,7 @@ interface IReturnData {
 	type: PizzaType;
 	selectedIngredients: Set<number>;
 	availableSizes: Variant[];
+	currentVariantId?: number;
 	addIngredient: (id: number) => void;
 	setSize: (size: PizzaSize) => void;
 	setType: (type: PizzaType) => void;
@@ -36,6 +37,8 @@ export const usePizzaOptions = (variants: ProductVariant[]): IReturnData => {
 	const [selectedIngredients, { toggle: addIngredient }] = useSet(new Set<number>([]));
 	const availableSizes = getAvailablePizzaSizes(variants, type);
 
+	const currentVariantId = variants.find((variant) => variant.pizzaType === type && variant.size === size)?.id;
+
 	useEffect(() => {
 		const isAvailableSize = availableSizes.find((item) => Number(item.value) === size && !item.disabled);
 		const availableSize = availableSizes.find((item) => !item.disabled);
@@ -45,5 +48,5 @@ export const usePizzaOptions = (variants: ProductVariant[]): IReturnData => {
 		}
 	}, [type]);
 
-	return { size, type, selectedIngredients, addIngredient, setSize, setType, availableSizes };
+	return { size, type, selectedIngredients, addIngredient, setSize, setType, availableSizes, currentVariantId };
 }
