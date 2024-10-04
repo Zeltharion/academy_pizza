@@ -1,17 +1,22 @@
-import { cn } from "@/shared/lib";
-import s from './CartDrawer.module.scss'
+'use client'
+
+import { useEffect } from "react";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import {
 	Sheet,
-	SheetClose,
 	SheetContent,
 	SheetFooter,
 	SheetHeader,
 	SheetTitle,
 	SheetTrigger
 } from "@/components/ui";
-import Link from "next/link";
 import { Button } from "@/components/ui";
-import { ArrowRight } from "lucide-react";
+import { CartDrawerItem } from "@/components/shared";
+import { cn, getCartItemsDetail, getCartTotalItemsWord } from "@/shared/lib";
+import { useCartStore } from "@/shared/store";
+import { PizzaSize, PizzaType } from "@/shared/constants/pizza";
+import s from './CartDrawer.module.scss'
 
 interface ICartDrawer {
 	className?: string;
@@ -21,16 +26,53 @@ export const CartDrawer: React.FC<React.PropsWithChildren<ICartDrawer>> = ({
 	className,
 	children
 }) => {
+	const { totalAmount, items, fetchCartItems, updateItemQuantity, removeCartItem } = useCartStore();
+
+	useEffect(() => {
+		fetchCartItems();
+	}, [fetchCartItems]);
+
+	const handleOnClickCountButton = (id: number, type: 'plus' | 'minus', quantity: number) => {
+		const newQuantity = type === 'plus' ? quantity + 1 : quantity - 1;
+		updateItemQuantity(id, newQuantity);
+	}
+
 	return (
 		<Sheet>
 			<SheetTrigger asChild>{children}</SheetTrigger>
-			<SheetContent className={s.cartDrawer__content}>
+			<SheetContent className={cn(s.cartDrawer__content, className)}>
 				<SheetHeader>
 					<SheetTitle>
-						В корзине
-						<span className="font-bold">{' 2 '} товара</span>
+						В корзине{' '}
+						<span className="font-bold">
+							{items.length} {getCartTotalItemsWord(items.length)}
+						</span>
 					</SheetTitle>
 				</SheetHeader>
+
+				<div className={s.cartDrawer__items}>
+					{items.map((item) => (
+						<CartDrawerItem
+							id={item.id}
+							key={item.id}
+							imageUrl={item.imageUrl}
+							details={
+								item.pizzaType && item.pizzaSize
+									? getCartItemsDetail(
+										item.ingredients,
+										item.pizzaType as PizzaType,
+										item.pizzaSize as PizzaSize,
+									)
+									: ''
+							}
+							name={item.name}
+							price={item.price}
+							quantity={item.quantity}
+							onClickCountButton={(type) => handleOnClickCountButton(item.id, type, item.quantity)}
+							onClickDeleteButton={() => removeCartItem(item.id)}
+						/>
+					))}
+				</div>
 
 				<SheetFooter className={s.cartDrawer__footer}>
 					<div className="w-full">
@@ -39,7 +81,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren<ICartDrawer>> = ({
 								Итого
 								<div className={s.cartDrawer__footer__totalPrice__line} />
 							</span>
-							<span className={s.cartDrawer__footer__totalPrice__price}>500 ₽</span>
+							<span className={s.cartDrawer__footer__totalPrice__price}>{totalAmount} ₽</span>
 						</div>
 					</div>
 
@@ -49,7 +91,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren<ICartDrawer>> = ({
 							className={s.cartDrawer__footer__button}
 						>
 							Оформить заказ
-							<ArrowRight className="w-5 ml-2"/>
+							<ArrowRight className="w-5 ml-2" />
 						</Button>
 					</Link>
 				</SheetFooter>

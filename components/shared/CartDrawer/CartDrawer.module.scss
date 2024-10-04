@@ -1,6 +1,10 @@
 .cartDrawer__content {
 	@apply flex flex-col justify-between pb-0 bg-gray-100;
 
+	.cartDrawer__items {
+		@apply flex flex-col flex-1 -mx-6 mt-5 overflow-auto gap-2 rounded-md;
+	}
+
 	.cartDrawer__footer {
 		@apply -mx-6 flex-col flex bg-white p-8;
 	
