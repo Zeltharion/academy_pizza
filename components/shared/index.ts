@@ -18,6 +18,7 @@ export * from './ProductVariantSelector/ProductVariantSelector'
 export * from './ProductForm/ProductForm'
 export * from './PizzaForm/PizzaForm'
 export * from './IngredientCard/IngredientCard'
+export * from './ProductFormsContainer/ProductFormsContainer'
 
 export * from './CartButton/CartButton'
 export * from './CartDrawer/CartDrawer'
