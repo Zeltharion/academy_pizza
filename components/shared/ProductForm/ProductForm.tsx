@@ -14,15 +14,15 @@ export const ProductForm: React.FC<IProductForm> = ({
 }) => {
 
 	return (
-		<div className={cn(s.pizzaForm, className)}>
-			<div className={s.pizzaForm__image}>
+		<div className={cn(s.productForm, className)}>
+			<div className={s.productForm__image}>
 				<img src={imageUrl} alt={name} />
 			</div>
 
-			<div className="w-[490px] bg-gray-50 p-7">
+			<div className={s.productForm__info}>
 				<Title text={name} size="md" className="font-extrabold mb-1" />
 				<Button
-					className={s.pizzaForm__button}
+					className={s.productForm__button}
 					onClick={() => onSubmit?.()}
 					loading={loading}>
 					Добавить в корзину за {price} ₽
