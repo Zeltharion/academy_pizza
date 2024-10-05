@@ -13,6 +13,22 @@ export interface GetSearchParams {
 const DEFAULT_MIN_PRICE = 0;
 const DEFAULT_MAX_PRICE = 1000;
 
+/**
+ * Finds categories with products that match the given search parameters.
+ *
+ * @param params - GetSearchParams object with query, sortBy, sizes, pizzaTypes, ingredients, priceFrom, and priceTo properties.
+ * @example findPizzas({
+ *  	query: 'pizza',
+ *  	sortBy: 'price',
+ *  	sizes: '30',
+ *  	pizzaTypes: '1',
+ *  	ingredients: '1,2,3',
+ *  	priceFrom: '100',
+ *  	priceTo: '200' 
+ * })
+ * @returns An array of categories with products that match the given search parameters.
+ */
+
 export const findPizzas = async (params: GetSearchParams) => {
 	const ingredientsIdArr = params.ingredients?.split(',').map(Number);
 	const pizzaTypes = params.pizzaTypes?.split(',').map(Number);
@@ -61,7 +77,7 @@ export const findPizzas = async (params: GetSearchParams) => {
 						},
 						orderBy: {
 							price: 'asc',
-						}, 
+						},
 					},
 				}
 			},
