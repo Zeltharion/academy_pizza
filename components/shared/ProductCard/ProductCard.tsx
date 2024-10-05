@@ -11,6 +11,7 @@ export const ProductCard: React.FC<IProductCard> = ({
 	name,
 	price,
 	imageUrl,
+	ingredients,
 	className
 }) => {
 	return (
@@ -28,7 +29,9 @@ export const ProductCard: React.FC<IProductCard> = ({
 					className={s.productCard__title}
 				/>
 				<p className={s.productCard__igredients}>
-					Цыпленок, моцарелла, сыры чеддер и пармезан, сырный соус, красный лук, томаты, чеснок
+					{ingredients.map((ingredient, index) =>
+						index === 0 ? ingredient.name : ingredient.name.charAt(0).toLowerCase() + ingredient.name.slice(1)
+					).join(', ')}
 				</p>
 
 				<div className={s.productCard__footer}>
