@@ -1,13 +1,3 @@
 .productCard {
 	@apply my-10 flex flex-col;
-
-	.productCard__wrapper {
-		@apply flex flex-1;
-
-		.productCard__info {
-			@apply w-[490px] bg-gray-50 p-7;
-		}
-	}
-
-
 }
