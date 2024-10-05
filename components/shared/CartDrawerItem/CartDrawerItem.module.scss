@@ -1,11 +1,15 @@
 .cartDrawer__item {
 	@apply flex bg-white p-5 gap-6 rounded-md;
 
+	&.disabledItem {
+		@apply opacity-50 pointer-events-none;
+	}
+
 	.cartDrawer__item__footer {
 		@apply flex items-center justify-between;
 	}
 
 	.cartDrawer__item__deleteBtn {
-		@apply text-gray-400 cursor-pointer hover:text-gray-600;
+		@apply text-gray-400 cursor-pointer hover:text-gray-600 w-6 min-w-6 p-1;
 	}
 }
