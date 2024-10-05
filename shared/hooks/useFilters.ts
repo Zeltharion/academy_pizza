@@ -1,6 +1,6 @@
 import { useSearchParams } from "next/navigation";
 import { useSet } from "react-use";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 interface IPriceRange {
 	priceFrom?: number;
@@ -60,7 +60,7 @@ export const useFilters = (): IReturnFilters => {
 		setSelectedPrices((prev) => ({ ...prev, [name]: value }));
 	};
 
-	return {
+	return useMemo(() => ({
 		selectedPrices,
 		selectedPizzaTypes,
 		selectedSizes,
@@ -69,5 +69,5 @@ export const useFilters = (): IReturnFilters => {
 		setSelectedPizzaTypes: toggleSelectedPizzaTypes,
 		setSelectedSizes: toggleSelectedSizes,
 		setSelectedIngredients: toggleSelectedIngredients,
-	}
+	}), [selectedSizes, selectedPizzaTypes, selectedPrices, selectedIngredients]);
 }
