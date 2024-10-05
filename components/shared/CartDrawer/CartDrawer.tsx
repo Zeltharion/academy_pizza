@@ -34,6 +34,10 @@ export const CartDrawer: React.FC<React.PropsWithChildren<ICartDrawer>> = ({
 
 	const handleOnClickCountButton = (id: number, type: 'plus' | 'minus', quantity: number) => {
 		const newQuantity = type === 'plus' ? quantity + 1 : quantity - 1;
+
+		const item = items.find(item => item.id === id);
+		if (item) { item.disabled = true; }
+		
 		updateItemQuantity(id, newQuantity);
 	}
 
@@ -65,6 +69,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren<ICartDrawer>> = ({
 									)
 									: ''
 							}
+							disabled={item.disabled}
 							name={item.name}
 							price={item.price}
 							quantity={item.quantity}
