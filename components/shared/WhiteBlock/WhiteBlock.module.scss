@@ -1,0 +1,11 @@
+.whiteBlock {
+	@apply bg-white rounded-3xl;
+
+	.whiteBlock__header {
+		@apply flex items-center justify-between p-5 px-7 border-b border-gray-100;
+	}
+
+	.whiteBlock__content {
+		@apply px-5 py-4;
+	}
+}
