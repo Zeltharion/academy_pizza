@@ -1,0 +1,19 @@
+.checkoutItem {
+	@apply flex items-center justify-between;
+
+	&.disabledItem {
+		@apply opacity-50 pointer-events-none;
+	}
+
+	.checkoutItem__info {
+		@apply flex items-center gap-5 flex-1;
+	}
+
+	.checkoutItem__buttons {
+		@apply flex items-center gap-5 ml-20;
+
+		.checkoutItem__deleteBtn {
+			@apply text-gray-400 cursor-pointer hover:text-gray-600;
+		}
+	}
+}
