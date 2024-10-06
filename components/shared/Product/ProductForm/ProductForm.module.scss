@@ -1,0 +1,18 @@
+.productForm {
+	@apply flex flex-1;
+
+	.productForm__info {
+		@apply w-[490px] bg-gray-50 p-7 rounded-md flex justify-between flex-col;
+	}
+	.productForm__image {
+		@apply flex items-center justify-center flex-1 relative w-full;
+
+		img {
+			@apply relative left-2 top-2 transition-all duration-300 z-10 w-[350px] h-[350px];
+		}
+	}
+
+	.productForm__button {
+		@apply h-[55px] px-10 text-base rounded-[18px] w-full;
+	}
+}
