@@ -1,10 +1,10 @@
 import Link from "next/link"
-import { cn } from "@/shared/lib/utils"
+import { Plus } from "lucide-react"
+import { cn, formatIngredientsArrayToText } from "@/shared/lib"
 import { Title } from "@/components/shared"
+import { Button } from "@/components/ui"
 import { IProductCard } from "./ProductCard.types"
 import s from './ProductCard.module.scss'
-import { Button } from "@/components/ui"
-import { Plus } from "lucide-react"
 
 export const ProductCard: React.FC<IProductCard> = ({
 	id,
@@ -29,9 +29,7 @@ export const ProductCard: React.FC<IProductCard> = ({
 					className={s.productCard__title}
 				/>
 				<p className={s.productCard__igredients}>
-					{ingredients.map((ingredient, index) =>
-						index === 0 ? ingredient.name : ingredient.name.charAt(0).toLowerCase() + ingredient.name.slice(1)
-					).join(', ')}
+					{formatIngredientsArrayToText(ingredients)}
 				</p>
 
 				<div className={s.productCard__footer}>
