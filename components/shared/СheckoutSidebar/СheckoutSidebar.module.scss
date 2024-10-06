@@ -1,0 +1,19 @@
+.checkoutSidebar {
+	@apply sticky p-3 top-4;
+
+	.checkoutSidebar__total {
+		@apply flex flex-col gap-1;
+
+		.checkoutSidebar__total__text {
+			@apply text-xl;
+		}
+
+		.checkoutSidebar__total__price {
+			@apply text-2xl font-extrabold;
+		}
+	}
+
+	.checkoutSidebar__button {
+		@apply w-full h-14 rounded-2xl mt-6 text-base font-bold;
+	}
+}
