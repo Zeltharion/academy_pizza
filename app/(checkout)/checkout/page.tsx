@@ -1,21 +1,43 @@
 'use client'
 
-import {  Input, Textarea } from "@/components/ui";
-import { CheckoutItem, CheckoutSidebar, Container, Title, WhiteBlock } from "@/components/shared";
+import { FormProvider, useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import {
+	Container,
+	Title,
+	CheckoutCart,
+	CheckoutFormAddress,
+	CheckoutFormPersonal,
+	CheckoutSidebar,
+} from "@/components/shared";
+import { checkoutFormSchema, TCheckoutFormValues } from '@/shared/constants';
 import { useCart } from "@/shared/hooks";
-import { getCartItemsDetail } from "@/shared/lib";
-import { PizzaSize, PizzaType } from "@/shared/constants/pizza";
 import s from './checkoutPage.module.scss'
 
 export default function CheckoutPage() {
-	const { totalAmount, items, updateItemQuantity, removeCartItem } = useCart();
+	const { totalAmount, items, updateItemQuantity, removeCartItem, loading } = useCart();
 
-	const handleOnClickCountButton = (id: number, type: 'plus' | 'minus', quantity: number) => {
+	const form = useForm<TCheckoutFormValues>({
+		resolver: zodResolver(checkoutFormSchema),
+		defaultValues: {
+			email: '',
+			firstName: '',
+			lastName: '',
+			phone: '',
+			address: '',
+			comment: ''
+		}
+	})
+
+	const onSubmit = (data: TCheckoutFormValues) => {
+		console.log(data)
+	}
+
+	const onClickCountButton = (id: number, quantity: number, type: 'plus' | 'minus') => {
 		const newQuantity = type === 'plus' ? quantity + 1 : quantity - 1;
-
 		const item = items.find(item => item.id === id);
-		if (item) { item.disabled = true; }
 
+		if (item) { item.disabled = true; }
 		updateItemQuantity(id, newQuantity);
 	}
 
@@ -27,56 +49,29 @@ export default function CheckoutPage() {
 				className={s.checkoutPage__title}
 			/>
 
-			<div className={s.checkoutPage__blocks}>
-				<div className={s.checkoutPage__blocks__left}>
-					<WhiteBlock title="1. Корзина">
-						<div className={s.checkoutItems}>
-							{items.map((item) => (
-								<CheckoutItem
-									id={item.id}
-									key={item.id}
-									imageUrl={item.imageUrl}
-									details={getCartItemsDetail(
-										item.ingredients,
-										item.pizzaType as PizzaType,
-										item.pizzaSize as PizzaSize,
-									)}
-									name={item.name}
-									price={item.price}
-									quantity={item.quantity}
-									disabled={item.disabled}
-									onClickCountButton={(type) => handleOnClickCountButton(item.id, type, item.quantity)}
-									onClickDeleteButton={() => removeCartItem(item.id)}
-								/>
-							))}
+			<FormProvider {...form}>
+				<form onSubmit={form.handleSubmit(onSubmit)}>
+					<div className={s.checkoutPage__blocks}>
+						<div className={s.checkoutPage__blocks__left}>
+							<CheckoutCart
+								onClickCountButton={onClickCountButton}
+								removeCartItem={removeCartItem}
+								loading={loading}
+								items={items}
+							/>
+							<CheckoutFormPersonal />
+							<CheckoutFormAddress />
 						</div>
-					</WhiteBlock>
 
-					<WhiteBlock title="2. Персональные данные">
-						<div className={s.personalData__inputs}>
-							<Input name="firstName" className="text-base" placeholder="Имя" />
-							<Input name="lastName" className="text-base" placeholder="Фамилия" />
-							<Input name="email" className="text-base" placeholder="E-mail" />
-							<Input name="phone" className="text-base" placeholder="Телефон" />
-						</div>
-					</WhiteBlock>
-
-					<WhiteBlock title="3. Адрес доставки">
-						<div className={s.adress__inputs}>
-							<Input name="adress" className="text-base" placeholder="Адрес" />
-							<Textarea
-								className="text-base"
-								placeholder="Комментарий к заказу"
-								rows={5}
+						<div className={s.checkoutPage__blocks__right}>
+							<CheckoutSidebar
+								totalAmount={totalAmount}
+								loading={loading}
 							/>
 						</div>
-					</WhiteBlock>
-				</div>
-
-				<div className={s.checkoutPage__blocks__right}>
-					<CheckoutSidebar totalAmount={totalAmount}/>
-				</div>
-			</div>
+					</div>
+				</form>
+			</FormProvider>
 		</Container>
 	)
 }

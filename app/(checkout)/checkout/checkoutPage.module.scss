@@ -10,18 +10,6 @@
 
 		.checkoutPage__blocks__left {
 			@apply flex flex-col gap-10 flex-1 mb-20;
-			
-			.checkoutItems {
-				@apply flex flex-col gap-5;
-			}
-
-			.personalData__inputs {
-				@apply grid grid-cols-2 gap-5;
-			}
-
-			.adress__inputs {
-				@apply flex flex-col gap-5;
-			}
 		}
 
 		.checkoutPage__blocks__right {
