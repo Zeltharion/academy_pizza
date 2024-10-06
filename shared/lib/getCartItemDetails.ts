@@ -13,8 +13,8 @@ import { CartStateItem } from "@/shared/lib";
  */
 export const getCartItemsDetail = (
 	ingredients: CartStateItem['ingredients'],
-	pizzaType: PizzaType,
-	pizzaSize: PizzaSize,
+	pizzaType?: PizzaType,
+	pizzaSize?: PizzaSize,
 ): string => {
 	const details = [];
 

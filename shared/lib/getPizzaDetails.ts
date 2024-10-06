@@ -23,7 +23,7 @@ export const getPizzaDetails = (
 	ingredients: Ingredient[]
 ) => {
 	const totalPrice = calculateTotalPizzaPrice(type, size, selectedIngredients, variants, ingredients);
-	const pizzaDetails = `${size}см, ${mapPizzaType[type]} тесто, ${selectedIngredients.size === 0 ? "без доп. ингредиентов" : `доп. ингредиентов: ${selectedIngredients.size}`}`;
+	const pizzaDetails = `${mapPizzaType[type]} ${size}см, ${selectedIngredients.size === 0 ? "без доп. ингредиентов" : `доп. ингредиентов: ${selectedIngredients.size}`}`;
 
 	return { pizzaDetails, totalPrice };
 }
