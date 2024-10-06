@@ -1,0 +1,10 @@
+.formTextarea {
+	
+	.formTextarea__label {
+		@apply font-medium mb-2;
+	}
+
+	.formTextarea__textarea {
+		@apply h-12 text-base;
+	}
+}

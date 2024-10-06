@@ -1,0 +1,10 @@
+.formInput {
+
+	.formInput__label {
+		@apply font-medium mb-2;
+	}
+
+	.formInput__input {
+		@apply h-12 text-base;
+	}
+}
