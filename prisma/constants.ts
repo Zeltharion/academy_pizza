@@ -1,4 +1,4 @@
-import { ingredientImage, pizzaImage, productImage } from "../shared/lib/images";
+import { ingredientImage, pizzaImage, productImage } from "@/shared/lib";
 
 export const categories = [
 	{ name: 'Пиццы' },
