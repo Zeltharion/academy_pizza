@@ -62,21 +62,43 @@ async function up() {
 	const pizza2 = await prisma.product.create({ data: pizzaObject2 });
 	const pizza3 = await prisma.product.create({ data: pizzaObject3 });
 
-	const pizzaIds = [pizza1.id, pizza2.id, pizza3.id];
-	const pizzaTypes: productVariantPizzaType[] = [1, 2];
-	const sizes: productVariantSize[] = [20, 30, 40];
-	const otherProductIds = Array.from({ length: 17 }, (_, i) => i + 1);
 
-	const productVariants = [
-		...pizzaIds.flatMap(productId =>
-			pizzaTypes.flatMap(pizzaType =>
-				sizes.map(size => generateProductVariant({ productId, pizzaType, size }))
-			)
-		),
-		...otherProductIds.map(productId => generateProductVariant({ productId }))
-	];
+	await prisma.productVariant.createMany({
+		data: [
+			generateProductVariant({ productId: pizza1.id, pizzaType: 1, size: 20 }),
+			generateProductVariant({ productId: pizza1.id, pizzaType: 2, size: 30 }),
+			generateProductVariant({ productId: pizza1.id, pizzaType: 2, size: 40 }),
 
-	await prisma.productVariant.createMany({ data: productVariants })
+			generateProductVariant({ productId: pizza2.id, pizzaType: 1, size: 20 }),
+			generateProductVariant({ productId: pizza2.id, pizzaType: 1, size: 30 }),
+			generateProductVariant({ productId: pizza2.id, pizzaType: 1, size: 40 }),
+			generateProductVariant({ productId: pizza2.id, pizzaType: 2, size: 20 }),
+			generateProductVariant({ productId: pizza2.id, pizzaType: 2, size: 30 }),
+			generateProductVariant({ productId: pizza2.id, pizzaType: 2, size: 40 }),
+
+			generateProductVariant({ productId: pizza3.id, pizzaType: 1, size: 20 }),
+			generateProductVariant({ productId: pizza3.id, pizzaType: 2, size: 30 }),
+			generateProductVariant({ productId: pizza3.id, pizzaType: 2, size: 40 }),
+
+			generateProductVariant({ productId: 1 }),
+			generateProductVariant({ productId: 2 }),
+			generateProductVariant({ productId: 3 }),
+			generateProductVariant({ productId: 4 }),
+			generateProductVariant({ productId: 5 }),
+			generateProductVariant({ productId: 6 }),
+			generateProductVariant({ productId: 7 }),
+			generateProductVariant({ productId: 8 }),
+			generateProductVariant({ productId: 9 }),
+			generateProductVariant({ productId: 10 }),
+			generateProductVariant({ productId: 11 }),
+			generateProductVariant({ productId: 12 }),
+			generateProductVariant({ productId: 13 }),
+			generateProductVariant({ productId: 14 }),
+			generateProductVariant({ productId: 15 }),
+			generateProductVariant({ productId: 16 }),
+			generateProductVariant({ productId: 17 }),
+		]
+	})
 
 	await prisma.cart.createMany({
 		data: [

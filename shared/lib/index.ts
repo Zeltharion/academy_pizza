@@ -7,6 +7,8 @@ export * from './getCartDetails';
 export * from './getCartTotalItemsWord';
 export * from './findOrCreateCart'
 export * from './updateCartTotalAmount'
+export * from './findPizzas'
+export * from './formatIngredientsArrayToText'
 
-export * from './images';
+export * from './getImagePath';
 export * from './utils';

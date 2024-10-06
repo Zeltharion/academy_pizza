@@ -1,6 +1,6 @@
 import { ProductVariant } from "@prisma/client";
 import { pizzaSizes, PizzaType } from "../constants/pizza";
-import { Variant } from "@/components/shared/ProductVariantSelector/ProductVariantSelector.types";
+import { Variant } from "@/components/shared/Product/ProductVariantSelector/ProductVariantSelector.types";
 
 /**
  * Given an array of ProductVariant and a PizzaType, returns an array of objects with 'name', 'value', and 'disabled' properties.

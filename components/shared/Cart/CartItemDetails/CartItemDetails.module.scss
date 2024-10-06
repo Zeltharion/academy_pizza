@@ -1,0 +1,19 @@
+.cartItemDetailsPrice {
+	@apply font-bold;
+}
+
+.cartItemDetailsImage {
+	@apply w-[60px] h-[60px];
+}
+
+.cartItemDetailsInfo {
+	@apply min-w-[200px];
+
+	h2 {
+		@apply text-lg font-bold flex-1 leading-6;
+	}
+
+	p {
+		@apply text-xs text-gray-400 w-[90%];
+	}
+}

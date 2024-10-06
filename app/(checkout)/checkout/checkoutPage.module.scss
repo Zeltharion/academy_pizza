@@ -1,0 +1,20 @@
+.checkoutPage {
+	@apply mt-10;
+
+	.checkoutPage__title {
+		@apply font-extrabold mb-8;
+	}
+
+	.checkoutPage__blocks {
+		@apply flex gap-10;
+
+		.checkoutPage__blocks__left {
+			@apply flex flex-col gap-10 flex-1 mb-20;
+		}
+
+		.checkoutPage__blocks__right {
+			@apply w-[450px];
+		}
+	}
+
+}

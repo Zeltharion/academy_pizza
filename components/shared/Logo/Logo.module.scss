@@ -1,0 +1,14 @@
+.logo {
+	@apply flex items-center gap-4;
+
+	.logo__text {
+
+		h1 {
+			@apply text-2xl uppercase font-black;
+		}
+
+		p {
+			@apply text-sm text-gray-400 leading-3;
+		}
+	}
+}

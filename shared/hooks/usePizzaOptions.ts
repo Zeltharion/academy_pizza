@@ -1,4 +1,4 @@
-import { Variant } from "@/components/shared/ProductVariantSelector/ProductVariantSelector.types";
+import { Variant } from "@/components/shared/Product/ProductVariantSelector/ProductVariantSelector.types";
 import { useEffect, useState } from "react";
 import { PizzaSize, PizzaType } from "../constants/pizza";
 import { useSet } from "react-use";
