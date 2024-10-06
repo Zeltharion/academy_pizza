@@ -1,12 +1,9 @@
-import { cn } from '@/shared/lib/utils';
-
-interface ICartItemDetailsImage {
-  src: string;
-  className?: string;
-}
+import { cn } from '@/shared/lib';
+import { ICartItemDetailsImage } from './CartItemDetails.types';
+import s from './CartItemDetails.module.scss';
 
 export const CartItemDetailsImage: React.FC<ICartItemDetailsImage> = ({ src, className }) => {
   return (
-    <img className={cn('w-[60px] h-[60px]', className)} src={src} alt=''/>
+    <img className={cn(s.cartItemDetailsImage, className)} src={src} alt=''/>
   );
 };
