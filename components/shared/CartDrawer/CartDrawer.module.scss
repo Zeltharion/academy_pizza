@@ -1,6 +1,25 @@
 .cartDrawer__content {
 	@apply flex flex-col justify-between pb-0 bg-gray-100;
 
+	&.emptyWrapper {
+		@apply justify-center;
+	}
+	.cartDrawer__empty {
+		@apply flex flex-col items-center justify-center w-72 mx-auto;
+
+		.cartDrawer__emptyTitle {
+			@apply text-center font-bold my-2;
+		}
+
+		.cartDrawer__emptyText {
+			@apply text-center text-neutral-500 mb-5;
+		}
+
+		.cartDrawer__emptyButton {
+			@apply w-56 h-12 text-base;
+		}
+	}
+
 	.cartDrawer__items {
 		@apply flex flex-col flex-1 -mx-6 mt-5 overflow-auto gap-2 rounded-md;
 	}
