@@ -1,0 +1,23 @@
+.checkoutDetails {
+	@apply flex my-3;
+
+	.checkoutDetails__info {
+		@apply flex flex-1 text-lg;
+
+		.checkoutDetails__text {
+			@apply flex items-center;
+
+			.checkoutDetails__icon {
+				@apply mr-2 text-gray-300 size-5;
+			}
+		}
+
+		.checkoutDetails__line {
+			@apply flex-1 border-b border-dashed border-b-neutral-200 relative -top-1 mx-2;
+		}
+	}
+
+	.checkoutDetails__price {
+		@apply text-lg font-bold;
+	}
+}
