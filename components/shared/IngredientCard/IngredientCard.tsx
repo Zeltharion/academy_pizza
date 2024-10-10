@@ -1,4 +1,4 @@
-import { cn } from "@/shared/lib/utils"
+import { formatNumberToMoney, cn } from "@/shared/lib"
 import { CircleCheck } from "lucide-react"
 import { IIngredientCard } from "./IngredientCard.types"
 import s from './IngredientCard.module.scss'
@@ -22,7 +22,7 @@ export const IngredientCard: React.FC<IIngredientCard> = ({
 				alt=""
 			/>
 			<span className={s.ingredientCard__name}>{name}</span>
-			<span className={s.ingredientCard__price}>{price} ₽</span>
+			<span className={s.ingredientCard__price}>{formatNumberToMoney(price)}</span>
 		</div>
 	)
 }

@@ -1,0 +1,19 @@
+.authModal {
+	@apply w-[450px] bg-white p-10;
+
+	.authModal__Separator {
+		@apply flex justify-between items-center gap-2 mx-2;
+
+		span {
+			@apply text-sm text-neutral-400;
+		}
+
+		hr {
+			@apply w-full h-px;
+		}
+	}
+
+	.authModal__OAuthButtons {
+		@apply flex flex-col gap-2;
+	}
+}

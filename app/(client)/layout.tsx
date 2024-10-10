@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Header } from "@/components/shared";
 
 export const metadata: Metadata = {
-  title: "Next Pizza",
+  title: "Academy Pizza",
 };
 
 export default function ClientLayout({

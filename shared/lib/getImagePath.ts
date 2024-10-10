@@ -42,3 +42,8 @@ export const pizzaImage = {
 	chorizoFresh: '/assets/images/pizza/chorizoFresh.png',
 	pepperoniFresh: '/assets/images/pizza/pepperoniFresh.png',
 }
+
+export const oauthImage = {
+	github: '/assets/images/oauth/github.svg',
+	google: '/assets/images/oauth/google.svg',
+}

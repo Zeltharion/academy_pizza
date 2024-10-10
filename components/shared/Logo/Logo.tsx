@@ -12,7 +12,7 @@ export const Logo: React.FC = () => {
 				height={35}
 				priority />
 			<div className={s.logo__text}>
-				<h1>Next Pizza</h1>
+				<h1>Academy Pizza</h1>
 				<p>вкусней уже некуда</p>
 			</div>
 		</Link>

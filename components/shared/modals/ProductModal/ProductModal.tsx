@@ -1,10 +1,9 @@
 'use client'
 
 import { useRouter } from "next/navigation"
-import { cn } from "@/shared/lib/utils"
-import { Dialog } from "@/components/ui"
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui"
 import { ProductFormsContainer } from "@/components/shared"
-import { DialogContent, DialogTitle } from "@/components/ui/dialog"
+import { cn } from "@/shared/lib/utils"
 import { IProductModal } from "./ProductModal.types"
 import s from './ProductModal.module.scss'
 

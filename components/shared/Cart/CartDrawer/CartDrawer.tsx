@@ -15,7 +15,7 @@ import {
 	SheetTrigger
 } from "@/components/ui";
 import { CartDrawerItem, Title } from "@/components/shared";
-import { cn, getCartItemsDetail, getCartTotalItemsWord } from "@/shared/lib";
+import { cn, formatNumberToMoney, getCartItemsDetail, getCartTotalItemsWord } from "@/shared/lib";
 import { PizzaSize, PizzaType } from "@/shared/constants/pizza";
 import { useCart } from "@/shared/hooks";
 import s from './CartDrawer.module.scss'
@@ -103,7 +103,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
 										Итого
 										<div className={s.cartDrawer__footer__totalPrice__line} />
 									</span>
-									<span className={s.cartDrawer__footer__totalPrice__price}>{totalAmount} ₽</span>
+									<span className={s.cartDrawer__footer__totalPrice__price}>{formatNumberToMoney(totalAmount)}</span>
 								</div>
 							</div>
 

@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'Next Pizza | Admin',
+  title: 'Academy Pizza | Admin',
 }
 
 export default function AdminLayout({

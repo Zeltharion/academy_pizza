@@ -1,11 +1,11 @@
 {
-  "name": "next_pizza",
+  "name": "academy_pizza",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "dotenv -e .env.local next dev",
+    "build": "dotenv -e .env.production next build",
+    "start": "dotenv -e .env.production next start",
     "lint": "next lint",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
@@ -13,7 +13,9 @@
     "prisma:reset": "prisma migrate reset",
     "prisma:push": "prisma db push",
     "prisma:preview": "prisma db pull",
-    "prisma:seed": "prisma db seed"
+    "prisma:seed": "prisma db seed",
+    "prisma:dev":"dotenv -e .env.local -- npx prisma migrate dev",
+    "prisma:deploy":"dotenv -e .env.production -- npx prisma migrate deploy"
   },
   "prisma": {
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
@@ -29,12 +31,16 @@
     "@radix-ui/react-slot": "^1.1.0",
     "@types/bcrypt": "^5.0.2",
     "@types/qs": "^6.9.16",
+    "argon2": "^0.41.1",
     "axios": "^1.7.7",
     "bcrypt": "^5.1.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "dotenv-cli": "^7.4.2",
     "lucide-react": "^0.446.0",
     "next": "14.2.13",
+    "next-auth": "^4.24.8",
+    "nextjs-toploader": "^3.7.15",
     "prisma": "^5.20.0",
     "qs": "^6.13.0",
     "react": "^18",
@@ -43,6 +49,7 @@
     "react-hook-form": "^7.53.0",
     "react-hot-toast": "^2.4.1",
     "react-use": "^17.5.1",
+    "resend": "^4.0.0",
     "sass": "^1.79.3",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",

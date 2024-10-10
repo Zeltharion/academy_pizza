@@ -1,0 +1,11 @@
+.emailTemplate {
+	@apply flex flex-col gap-5 p-10 rounded-lg bg-white shadow-md;
+
+	hr {
+		@apply text-neutral-400 w-full mx-2;
+	}
+	
+	.emailTemplate__footer {
+		@apply text-neutral-500 text-sm
+	}
+}

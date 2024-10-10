@@ -3,6 +3,7 @@ import { Title } from "@/components/shared"
 import { IProductForm } from "./ProductForm.types"
 import s from './ProductForm.module.scss'
 import { Button } from "@/components/ui"
+import { formatNumberToMoney } from "@/shared/lib"
 
 export const ProductForm: React.FC<IProductForm> = ({
 	imageUrl,
@@ -25,7 +26,7 @@ export const ProductForm: React.FC<IProductForm> = ({
 					className={s.productForm__button}
 					onClick={() => onSubmit?.()}
 					loading={loading}>
-					Добавить в корзину за {price} ₽
+					Добавить в корзину за {formatNumberToMoney(price)}
 				</Button>
 			</div>
 		</div>
