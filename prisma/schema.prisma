@@ -25,7 +25,7 @@ model User {
     email            String            @unique
     password         String
     role             UserRole          @default(USER)
-    verified         DateTime
+    verified         DateTime?
     cart             Cart?
     orders           Order[]
     verificationCode VerificationCode?
@@ -115,12 +115,13 @@ model Order {
     userId      Int?        @unique
     token       String
     totalAmount Int
-    status      OrderStatus
+    status      OrderStatus @default(PENDING)
     items       Json?
     fullName    String
+    phone       String
     email       String
     address     String
-    comment     String
+    comment     String?
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
