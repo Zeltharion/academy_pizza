@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { Plus } from "lucide-react"
-import { cn, formatIngredientsArrayToText } from "@/shared/lib"
+import { cn, formatIngredientsArrayToText, formatNumberToMoney } from "@/shared/lib"
 import { Title } from "@/components/shared"
 import { Button } from "@/components/ui"
 import { IProductCard } from "./ProductCard.types"
@@ -34,7 +34,7 @@ export const ProductCard: React.FC<IProductCard> = ({
 
 				<div className={s.productCard__footer}>
 					<span className="text-[20px]">
-						от <b>{price} ₽</b>
+						от <b>{formatNumberToMoney(price)}</b>
 					</span>
 					<Button variant="secondary" className="text-base font-bold">
 						<Plus size={20} className="mr-1" />

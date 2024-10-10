@@ -3,7 +3,7 @@
 import { PizzaSize, PizzaType, pizzaTypes } from "@/shared/constants/pizza"
 import { IngredientCard, PizzaImage, ProductVariantSelector, Title } from "@/components/shared"
 import { Button } from "@/components/ui"
-import { getPizzaDetails, cn } from "@/shared/lib"
+import { getPizzaDetails, cn, formatNumberToMoney } from "@/shared/lib"
 import { usePizzaOptions } from "@/shared/hooks"
 import { IPizzaForm } from "./PizzaForm.types"
 import s from './PizzaForm.module.scss'
@@ -76,7 +76,7 @@ export const PizzaForm: React.FC<IPizzaForm> = ({
 					className={s.pizzaForm__button}
 					onClick={handleOnClickAddToCart}
 					loading={loading}>
-					Добавить в корзину за {totalPrice} ₽
+					Добавить в корзину за {formatNumberToMoney(totalPrice)}
 				</Button>
 			</div>
 		</div>

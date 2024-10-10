@@ -1,7 +1,7 @@
 import { Button, Skeleton } from '@/components/ui'
 import { Package, Percent, Truck, ArrowRight } from 'lucide-react'
 import { CheckoutDetails, WhiteBlock } from '@/components/shared'
-import { cn } from '@/shared/lib';
+import { cn, formatNumberToMoney } from '@/shared/lib';
 import { ICheckoutSidebar } from './CheckoutSidebar.type';
 import s from './СheckoutSidebar.module.scss'
 
@@ -20,29 +20,29 @@ export const CheckoutSidebar: React.FC<ICheckoutSidebar> = ({
 		<WhiteBlock className={cn(s.checkoutSidebar, className)}>
 			<div className={s.checkoutSidebar__total}>
 				<span className={s.checkoutSidebar__total__text}>Итого:</span>
-				{loading ? <Skeleton className="h-8 w-20" /> : <span className={s.checkoutSidebar__total__price}>{totalPrice} ₽</span>}
+				{loading ? <Skeleton className="h-8 w-20" /> : <span className={s.checkoutSidebar__total__price}>{formatNumberToMoney(totalPrice)}</span>}
 			</div>
 
 			<CheckoutDetails
 				title="Стоимость корзины"
 				Icon={Package}
-				value={`${totalAmount} ₽`}
+				value={formatNumberToMoney(totalAmount)}
 				loading={loading}
 			/>
 			<CheckoutDetails
 				title="Сбор"
 				Icon={Percent}
-				value={`${taxPrice} ₽`}
+				value={formatNumberToMoney(taxPrice)}
 				loading={loading}
 			/>
 			<CheckoutDetails
 				title="Доставка"
 				Icon={Truck}
-				value={`${DELIVERY_PRICE} ₽`}
+				value={formatNumberToMoney(DELIVERY_PRICE)}
 				loading={loading}
 			/>
 
-			<Button type="submit" className={s.checkoutSidebar__button} disabled={loading}>
+			<Button type="submit" className={s.checkoutSidebar__button} loading={loading}>
 				Перейти к оплате
 				<ArrowRight className="w-5 ml-2" />
 			</Button>
