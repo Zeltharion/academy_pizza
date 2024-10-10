@@ -1,0 +1,15 @@
+.profileForm {
+	@apply flex flex-col items-center my-10 ;
+
+	.profileForm__wrapper {
+		@apply shadow-md p-10 rounded-3xl;
+	}
+
+	.profileForm__body {
+		@apply flex flex-col gap-5 w-96 mt-10;
+
+		.profileForm__signOutBtn {
+			@apply text-base bg-red-100 hover:bg-red-200 hover:text-red-600 text-red-500;
+		}
+	}
+}

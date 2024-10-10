@@ -1,0 +1,11 @@
+.loginForm {
+	@apply flex flex-col gap-5;
+
+	.loginForm__header { 
+		@apply flex justify-between items-center;
+	}
+
+	.loginForm__button {
+		@apply h-12 text-base;
+	}
+}
