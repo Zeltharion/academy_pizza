@@ -1,0 +1,15 @@
+.infoBlock {
+	@apply flex items-center justify-between w-[840px] gap-12;
+
+	.infoBlock__content {
+		@apply flex flex-col;
+	}
+
+	.infoBlock__buttons {
+		@apply flex gap-5 mt-11;
+
+		.infoBlock_refreshButton {
+			@apply text-gray-500 border-gray-400 hover:bg-gray-50;
+		}
+	}
+}
