@@ -2,9 +2,8 @@
 
 import { AddressSuggestions } from 'react-dadata'
 import { ErrorText } from '@/components/shared';
-import { Input } from '@/components/ui';
-import { cn } from '@/shared/lib';
 import { IAddressInput } from './AdressInput.types';
+import { cn } from '@/shared/lib';
 import s from './AddressInput.module.scss'
 import 'react-dadata/dist/react-dadata.css'
 
@@ -14,7 +13,7 @@ export const AddressInput: React.FC<IAddressInput> = ({
 	className
 }) => {
 	return (
-		<div className={s.addressInput}>
+		<div className={cn(s.addressInput, className)}>
 			<AddressSuggestions
 				token={process.env.DADATA_API_TOKEN!}
 				count={5}
