@@ -1,0 +1,7 @@
+.oauthButton {
+	@apply gap-2 h-12 p-2 flex-1;
+
+	&.loading {
+		@apply bg-gray-100 cursor-not-allowed;
+	}
+}
