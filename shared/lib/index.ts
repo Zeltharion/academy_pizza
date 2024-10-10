@@ -10,5 +10,9 @@ export * from './updateCartTotalAmount'
 export * from './findPizzas'
 export * from './formatIngredientsArrayToText'
 
+export * from './sendEmail';
+export * from './createPayment'
+
 export * from './getImagePath';
 export * from './utils';
+export * from './formatNumberToMoney';
