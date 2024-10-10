@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import {
@@ -13,9 +14,15 @@ import {
 import { checkoutFormSchema, TCheckoutFormValues } from '@/shared/constants';
 import { useCart } from "@/shared/hooks";
 import s from './checkoutPage.module.scss'
+import { createOrder } from '@/app/actions';
+import toast from 'react-hot-toast';
+import { useSession } from 'next-auth/react';
+import { Api } from '@/shared/services';
 
 export default function CheckoutPage() {
+	const [submitting, setSubmitting] = useState(false);
 	const { totalAmount, items, updateItemQuantity, removeCartItem, loading } = useCart();
+	const { data: session } = useSession()
 
 	const form = useForm<TCheckoutFormValues>({
 		resolver: zodResolver(checkoutFormSchema),
@@ -29,8 +36,35 @@ export default function CheckoutPage() {
 		}
 	})
 
-	const onSubmit = (data: TCheckoutFormValues) => {
-		console.log(data)
+	useEffect(() => {
+		async function fetchUserInfo() {
+			const data = await Api.auth.getMe();
+			const [firstName, lastName] = data.fullName.split(' ');
+
+			form.setValue('firstName', firstName);
+			form.setValue('lastName', lastName);
+			form.setValue('email', data.email);
+		}
+
+		if (session) {
+			fetchUserInfo();
+		}
+	}, [session])
+
+	const onSubmit = async (data: TCheckoutFormValues) => {
+		try {
+			setSubmitting(true)
+			const url = await createOrder(data);
+			toast.success('Заказ оформлен', { icon: '✅' })
+
+			if (url !== null && url !== undefined) {
+				location.href = url;
+			}
+		} catch (error) {
+			console.log('[CHECKOUT_ERROR]:', error);
+			setSubmitting(false);
+			toast.error('Не удалось оформить заказ', { icon: '❌' })
+		}
 	}
 
 	const onClickCountButton = (id: number, quantity: number, type: 'plus' | 'minus') => {
@@ -66,7 +100,7 @@ export default function CheckoutPage() {
 						<div className={s.checkoutPage__blocks__right}>
 							<CheckoutSidebar
 								totalAmount={totalAmount}
-								loading={loading}
+								loading={loading || submitting}
 							/>
 						</div>
 					</div>
