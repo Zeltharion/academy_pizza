@@ -1,0 +1,15 @@
+.emailTemplateSuccess {
+	@apply flex flex-col p-10 bg-slate-50 rounded-lg shadow-md;
+
+	.emailTemplateSuccess__list {
+		@apply list-none flex flex-col gap-4 mt-5;
+
+		.emailTemplateSuccess__list__item {
+			@apply flex gap-3 p-2 bg-gray-50 rounded-md;
+
+			img {
+				@apply w-6 h-6;
+			}
+		}
+	}
+}
