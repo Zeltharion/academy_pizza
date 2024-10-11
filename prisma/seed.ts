@@ -7,7 +7,9 @@ import {
 	pizzaObject1,
 	pizzaObject2,
 	pizzaObject3,
-	products
+	products,
+	stories,
+	storyItems
 } from "./constants";
 
 const randomNumber = (min: number, max: number) => {
@@ -125,6 +127,14 @@ async function up() {
 			}
 		}
 	})
+
+	await prisma.story.createMany({
+		data: stories
+	})
+	
+	await prisma.storyItem.createMany({
+		data: storyItems
+	})
 }
 
 async function down() {
@@ -146,11 +156,10 @@ async function main() {
 	}
 }
 
-main()
-	.then(async () => {
-		await prisma.$disconnect();
-	}).catch(async (e) => {
-		console.error(e);
-		await prisma.$disconnect();
-		process.exit(1);
-	})
+main().then(async () => {
+	await prisma.$disconnect();
+}).catch(async (e) => {
+	console.error(e);
+	await prisma.$disconnect();
+	process.exit(1);
+})
