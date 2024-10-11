@@ -1,5 +1,12 @@
 import { Suspense } from "react";
-import { Container, Filters, ProductsGroupList, Title, TopBar } from "@/components/shared";
+import {
+  Container,
+  Filters,
+  ProductsGroupList,
+  Stories,
+  Title,
+  TopBar
+} from "@/components/shared";
 import { findPizzas, GetSearchParams } from "@/shared/lib";
 
 export default async function Client({ searchParams }: { searchParams: GetSearchParams }) {
@@ -14,7 +21,10 @@ export default async function Client({ searchParams }: { searchParams: GetSearch
           className="font-extrabold" />
       </Container>
 
+
       <TopBar categories={categories.filter((category) => category.products.length > 0)} />
+
+      <Stories />
 
       <Container className="my-10">
         <div className="flex gap-[80px]">
