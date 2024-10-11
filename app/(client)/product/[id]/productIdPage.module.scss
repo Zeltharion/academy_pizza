@@ -1,3 +1,7 @@
 .productCard {
-	@apply my-10 flex flex-col;
+	@apply my-10 flex flex-col gap-5;
+
+	.recommendations__list {
+		@apply grid-cols-4;
+	}
 }

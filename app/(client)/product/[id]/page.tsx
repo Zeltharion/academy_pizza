@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
+import { IProductWithRelations } from "@/types/prisma";
 import { prisma } from "@/prisma/prismaClient";
-import { Container, ProductFormsContainer } from "@/components/shared";
+import { Container, ProductFormsContainer, ProductsGroupList } from "@/components/shared";
 import s from './productIdPage.module.scss'
 
 export default async function ProductPage({ params: { id } }: { params: { id: string } }) {
@@ -31,7 +32,13 @@ export default async function ProductPage({ params: { id } }: { params: { id: st
 
 	return (
 		<Container className={s.productCard}>
-			<ProductFormsContainer product={product}/>
+			<ProductFormsContainer product={product} />
+			<ProductsGroupList
+				title="Рекомендуем"
+				categoryId={product.category.id}
+				items={product.category.products as IProductWithRelations[]}
+				listClassName={s.recommendations__list}
+			/>
 		</Container>
 	)
 }
