@@ -2,11 +2,11 @@
 
 import React, { useEffect, useRef } from 'react'
 import { useIntersection } from 'react-use'
+import { ProductCard, Title } from "@/components/shared"
+import { useCategoryStore } from '@/shared/store/category'
 import { cn } from "@/shared/lib/utils"
 import { IProductsGroupList } from "./ProductsGroupList.types"
 import s from './ProductsGroupList.module.scss'
-import { ProductCard, Title } from "@/components/shared"
-import { useCategoryStore } from '@/shared/store/category'
 
 export const ProductsGroupList: React.FC<IProductsGroupList> = ({
 	title,
@@ -39,7 +39,7 @@ export const ProductsGroupList: React.FC<IProductsGroupList> = ({
 				className={s.productsGroupList__title}
 			/>
 			<div className={cn(s.productsGroupList__list, listClassName)}>
-				{items.map((product, index) => (
+				{items.map((product) => (
 					<ProductCard
 						key={product.id}
 						id={product.id}
