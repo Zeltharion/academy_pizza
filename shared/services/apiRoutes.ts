@@ -3,4 +3,5 @@ export enum ApiRoutes {
 	INGREDIENTS = 'ingredients',
 	CART = 'cart/',
 	AUTH_ME = 'auth/me',
+	STORIES = 'stories',
 }
