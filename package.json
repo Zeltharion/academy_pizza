@@ -14,8 +14,8 @@
     "prisma:push": "prisma db push",
     "prisma:preview": "prisma db pull",
     "prisma:seed": "prisma db seed",
-    "prisma:dev":"dotenv -e .env.local -- npx prisma migrate dev",
-    "prisma:deploy":"dotenv -e .env.production -- npx prisma migrate deploy"
+    "prisma:dev": "dotenv -e .env.local -- npx prisma migrate dev",
+    "prisma:deploy": "dotenv -e .env.production -- npx prisma migrate deploy"
   },
   "prisma": {
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
@@ -48,6 +48,7 @@
     "react-dom": "^18",
     "react-hook-form": "^7.53.0",
     "react-hot-toast": "^2.4.1",
+    "react-insta-stories": "^2.7.0",
     "react-use": "^17.5.1",
     "resend": "^4.0.0",
     "sass": "^1.79.3",
