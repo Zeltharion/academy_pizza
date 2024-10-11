@@ -47,3 +47,20 @@ export const oauthImage = {
 	github: '/assets/images/oauth/github.svg',
 	google: '/assets/images/oauth/google.svg',
 }
+
+export const storiesImage = {
+	coffe: '/assets/images/stories/coffe.png',
+	monthFact: '/assets/images/stories/monthFact.png',
+	pizzafest: '/assets/images/stories/pizzafest.png',
+	rememberYou: '/assets/images/stories/rememberYou.png',
+	specialForYou: '/assets/images/stories/specialForYou.png',
+	withoutMeat: '/assets/images/stories/withoutMeat.png',
+}
+
+export const storyItemsImage = {
+	item1: '/assets/images/storyItems/item1.png',
+	item2: '/assets/images/storyItems/item2.png',
+	item3: '/assets/images/storyItems/item3.png',
+	item4: '/assets/images/storyItems/item4.png',
+	item5: '/assets/images/storyItems/item5.png',
+}
