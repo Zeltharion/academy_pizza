@@ -1,4 +1,4 @@
-import { ingredientImage, pizzaImage, productImage } from "../shared/lib/getImagePath";
+import { ingredientImage, pizzaImage, productImage, storiesImage, storyItemsImage } from "../shared/lib/getImagePath";
 
 export const categories = [
 	{ name: 'Пиццы' },
@@ -205,3 +205,55 @@ export const pizzaObject3 = {
 		connect: ingredients.slice(10, 40),
 	},
 }
+
+export const stories = [
+	{
+		previewImageUrl: storiesImage.coffe,
+	},
+	{
+		previewImageUrl: storiesImage.monthFact,
+	},
+	{
+		previewImageUrl: storiesImage.pizzafest,
+	},
+	{
+		previewImageUrl: storiesImage.rememberYou,
+	},
+	{
+		previewImageUrl: storiesImage.specialForYou,
+	},
+	{
+		previewImageUrl: storiesImage.withoutMeat,
+	},
+]
+
+export const storyItems = [
+	{
+		storyId: 1,
+		sourceUrl: storyItemsImage.item1,
+	},
+	{
+		storyId: 1,
+		sourceUrl: storyItemsImage.item2,
+	},
+	{
+		storyId: 1,
+		sourceUrl: storyItemsImage.item3,
+	},
+	{
+		storyId: 2,
+		sourceUrl: storyItemsImage.item4,
+	},
+	{
+		storyId: 2,
+		sourceUrl: storyItemsImage.item5,
+	},
+	{
+		storyId: 3,
+		sourceUrl: storyItemsImage.item1,
+	},
+	{
+		storyId: 3,
+		sourceUrl: storyItemsImage.item3,
+	}
+]
