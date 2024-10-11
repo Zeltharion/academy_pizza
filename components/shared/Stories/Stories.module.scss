@@ -1,0 +1,19 @@
+.stories {
+	@apply flex items-center justify-between gap-2 my-10;
+
+	img {
+		@apply rounded-md cursor-pointer;
+	}
+}
+
+.stories__modal {
+	@apply absolute left-0 top-0 w-full h-full bg-black/80 flex items-center justify-center z-[1000];
+
+	.stories__modal__closeBtn {
+		@apply absolute -right-10 -top-5 z-[1000];
+
+		.stories__modal__closeBtn__icon {
+			@apply absolute top-0 right-0 w-8 h-8 text-white/50;
+		}
+	}
+}
