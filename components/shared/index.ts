@@ -32,6 +32,8 @@ export * from './EmailTemplates'
 export * from './ProfileButton/ProfileButton'
 export * from './OAuthButton/OAuthButton'
 
+export * from './Stories/Stories'
+
 export * from './modals'
 
 export * from './Providers/Providers'
