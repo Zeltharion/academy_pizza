@@ -4,12 +4,19 @@ import { prisma } from "./prismaClient";
 import {
 	categories,
 	ingredients,
-	pizzaObject1,
-	pizzaObject2,
-	pizzaObject3,
 	products,
 	stories,
-	storyItems
+	storyItems,
+	pizzaPepperoniFresh,
+	pizzaCheese,
+	pizzaChorizoFresh,
+	pizzaBurger,
+	pizzaDiablo,
+	pizzaDoubleChicken,
+	pizzaFourSeasons,
+	pizzaHamAndCheese,
+	pizzaJulienne,
+	pizzaMeatMixBavarianSausages
 } from "./constants";
 
 const randomNumber = (min: number, max: number) => {
@@ -30,7 +37,7 @@ const generateProductVariant = ({
 }) => {
 	return {
 		productId,
-		price: randomNumber(400, 800),
+		price: randomNumber(200, 600),
 		pizzaType,
 		size,
 	} as Prisma.ProductVariantUncheckedCreateInput;
@@ -40,14 +47,14 @@ async function up() {
 	await prisma.user.createMany({
 		data: [
 			{
-				fullName: 'Test User',
+				fullName: 'User Test',
 				email: 'user@test.ru',
 				password: hashSync('111111', 10),
 				verified: new Date(),
 				role: 'USER',
 			},
 			{
-				fullName: 'Admin',
+				fullName: 'Admin Test',
 				email: 'admin@test.ru',
 				password: hashSync('111111', 10),
 				verified: new Date(),
@@ -60,27 +67,70 @@ async function up() {
 	await prisma.ingredient.createMany({ data: ingredients });
 	await prisma.product.createMany({ data: products });
 
-	const pizza1 = await prisma.product.create({ data: pizzaObject1 });
-	const pizza2 = await prisma.product.create({ data: pizzaObject2 });
-	const pizza3 = await prisma.product.create({ data: pizzaObject3 });
-
+	const pizzaCheeseObj = await prisma.product.create({ data: pizzaCheese });
+	const pizzaChorizoFreshObj = await prisma.product.create({ data: pizzaChorizoFresh });
+	const pizzaPepperoniFreshObj = await prisma.product.create({ data: pizzaPepperoniFresh });
+	const pizzaBurgerObj = await prisma.product.create({ data: pizzaBurger });
+	const pizzaDiabloObj = await prisma.product.create({ data: pizzaDiablo });
+	const pizzaDoubleChickenObj = await prisma.product.create({ data: pizzaDoubleChicken });
+	const pizzaFourSeasonsObj = await prisma.product.create({ data: pizzaFourSeasons });
+	const pizzaHamAndCheeseObj = await prisma.product.create({ data: pizzaHamAndCheese });
+	const pizzaJulienneObj = await prisma.product.create({ data: pizzaJulienne });
+	const pizzaMeatMixBavarianSausagesObj = await prisma.product.create({ data: pizzaMeatMixBavarianSausages });
 
 	await prisma.productVariant.createMany({
 		data: [
-			generateProductVariant({ productId: pizza1.id, pizzaType: 1, size: 20 }),
-			generateProductVariant({ productId: pizza1.id, pizzaType: 2, size: 30 }),
-			generateProductVariant({ productId: pizza1.id, pizzaType: 2, size: 40 }),
+			generateProductVariant({ productId: pizzaCheeseObj.id, pizzaType: 1, size: 20 }),
+			generateProductVariant({ productId: pizzaCheeseObj.id, pizzaType: 2, size: 30 }),
+			generateProductVariant({ productId: pizzaCheeseObj.id, pizzaType: 2, size: 40 }),
 
-			generateProductVariant({ productId: pizza2.id, pizzaType: 1, size: 20 }),
-			generateProductVariant({ productId: pizza2.id, pizzaType: 1, size: 30 }),
-			generateProductVariant({ productId: pizza2.id, pizzaType: 1, size: 40 }),
-			generateProductVariant({ productId: pizza2.id, pizzaType: 2, size: 20 }),
-			generateProductVariant({ productId: pizza2.id, pizzaType: 2, size: 30 }),
-			generateProductVariant({ productId: pizza2.id, pizzaType: 2, size: 40 }),
+			generateProductVariant({ productId: pizzaChorizoFreshObj.id, pizzaType: 1, size: 20 }),
+			generateProductVariant({ productId: pizzaChorizoFreshObj.id, pizzaType: 1, size: 30 }),
+			generateProductVariant({ productId: pizzaChorizoFreshObj.id, pizzaType: 1, size: 40 }),
+			generateProductVariant({ productId: pizzaChorizoFreshObj.id, pizzaType: 2, size: 20 }),
+			generateProductVariant({ productId: pizzaChorizoFreshObj.id, pizzaType: 2, size: 30 }),
+			generateProductVariant({ productId: pizzaChorizoFreshObj.id, pizzaType: 2, size: 40 }),
 
-			generateProductVariant({ productId: pizza3.id, pizzaType: 1, size: 20 }),
-			generateProductVariant({ productId: pizza3.id, pizzaType: 2, size: 30 }),
-			generateProductVariant({ productId: pizza3.id, pizzaType: 2, size: 40 }),
+			generateProductVariant({ productId: pizzaPepperoniFreshObj.id, pizzaType: 1, size: 20 }),
+			generateProductVariant({ productId: pizzaPepperoniFreshObj.id, pizzaType: 2, size: 30 }),
+			generateProductVariant({ productId: pizzaPepperoniFreshObj.id, pizzaType: 2, size: 40 }),
+
+			generateProductVariant({ productId: pizzaBurgerObj.id, pizzaType: 1, size: 20 }),
+			generateProductVariant({ productId: pizzaBurgerObj.id, pizzaType: 1, size: 30 }),
+			generateProductVariant({ productId: pizzaBurgerObj.id, pizzaType: 2, size: 40 }),
+
+			generateProductVariant({ productId: pizzaDiabloObj.id, pizzaType: 1, size: 20 }),
+			generateProductVariant({ productId: pizzaDiabloObj.id, pizzaType: 1, size: 30 }),
+			generateProductVariant({ productId: pizzaDiabloObj.id, pizzaType: 2, size: 30 }),
+			generateProductVariant({ productId: pizzaDiabloObj.id, pizzaType: 2, size: 40 }),
+
+			generateProductVariant({ productId: pizzaDoubleChickenObj.id, pizzaType: 1, size: 20 }),
+			generateProductVariant({ productId: pizzaDoubleChickenObj.id, pizzaType: 1, size: 30 }),
+			generateProductVariant({ productId: pizzaDoubleChickenObj.id, pizzaType: 2, size: 40 }),
+
+			generateProductVariant({ productId: pizzaFourSeasonsObj.id, pizzaType: 1, size: 30 }),
+			generateProductVariant({ productId: pizzaFourSeasonsObj.id, pizzaType: 1, size: 40 }),
+			generateProductVariant({ productId: pizzaFourSeasonsObj.id, pizzaType: 2, size: 40 }),
+
+			generateProductVariant({ productId: pizzaBurgerObj.id, pizzaType: 1, size: 20 }),
+			generateProductVariant({ productId: pizzaBurgerObj.id, pizzaType: 1, size: 30 }),
+			generateProductVariant({ productId: pizzaBurgerObj.id, pizzaType: 2, size: 40 }),
+
+			generateProductVariant({ productId: pizzaHamAndCheeseObj.id, pizzaType: 1, size: 20 }),
+			generateProductVariant({ productId: pizzaHamAndCheeseObj.id, pizzaType: 1, size: 30 }),
+			generateProductVariant({ productId: pizzaHamAndCheeseObj.id, pizzaType: 1, size: 40 }),
+			generateProductVariant({ productId: pizzaHamAndCheeseObj.id, pizzaType: 2, size: 20 }),
+			generateProductVariant({ productId: pizzaHamAndCheeseObj.id, pizzaType: 2, size: 30 }),
+			generateProductVariant({ productId: pizzaHamAndCheeseObj.id, pizzaType: 2, size: 40 }),
+
+			generateProductVariant({ productId: pizzaJulienneObj.id, pizzaType: 1, size: 20 }),
+			generateProductVariant({ productId: pizzaJulienneObj.id, pizzaType: 1, size: 30 }),
+			generateProductVariant({ productId: pizzaJulienneObj.id, pizzaType: 2, size: 30 }),
+			generateProductVariant({ productId: pizzaJulienneObj.id, pizzaType: 2, size: 40 }),
+
+			generateProductVariant({ productId: pizzaMeatMixBavarianSausagesObj.id, pizzaType: 1, size: 20 }),
+			generateProductVariant({ productId: pizzaMeatMixBavarianSausagesObj.id, pizzaType: 1, size: 30 }),
+			generateProductVariant({ productId: pizzaMeatMixBavarianSausagesObj.id, pizzaType: 2, size: 40 }),
 
 			generateProductVariant({ productId: 1 }),
 			generateProductVariant({ productId: 2 }),
@@ -99,6 +149,14 @@ async function up() {
 			generateProductVariant({ productId: 15 }),
 			generateProductVariant({ productId: 16 }),
 			generateProductVariant({ productId: 17 }),
+			generateProductVariant({ productId: 18 }),
+			generateProductVariant({ productId: 19 }),
+			generateProductVariant({ productId: 20 }),
+			generateProductVariant({ productId: 21 }),
+			generateProductVariant({ productId: 22 }),
+			generateProductVariant({ productId: 23 }),
+			generateProductVariant({ productId: 24 }),
+			generateProductVariant({ productId: 25 }),
 		]
 	})
 
@@ -131,7 +189,7 @@ async function up() {
 	await prisma.story.createMany({
 		data: stories
 	})
-	
+
 	await prisma.storyItem.createMany({
 		data: storyItems
 	})
