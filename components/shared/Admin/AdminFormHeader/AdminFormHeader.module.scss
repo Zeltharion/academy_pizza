@@ -1,0 +1,7 @@
+.adminFormHeader {
+	@apply flex justify-between items-center mb-7;
+
+	.adminFormHeader__buttons {
+		@apply flex gap-2;
+	}
+}

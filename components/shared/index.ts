@@ -34,6 +34,8 @@ export * from './OAuthButton/OAuthButton'
 
 export * from './Stories/Stories'
 
+export * from './Admin'
+
 export * from './modals'
 
 export * from './Providers/Providers'

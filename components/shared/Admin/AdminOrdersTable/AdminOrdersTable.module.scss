@@ -1,0 +1,11 @@
+.adminOrdersTable {
+	@apply flex flex-col gap-5 w-full;
+
+	.adminOrdersTable__header {
+		@apply flex items-center justify-between;
+	}
+
+	.adminOrdersTable__body {
+		@apply rounded-md border;
+	}
+}
