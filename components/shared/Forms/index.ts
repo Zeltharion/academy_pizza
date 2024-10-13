@@ -1,5 +1,6 @@
 export * from './FormInput/FormInput'
 export * from './FormTextarea/FormTextarea'
+export * from './FormSelect/FormSelect'
 export * from './ErrorText/ErrorText'
 export * from './RequiredSymbol/RequiredSymbol'
 export * from './ClearButton/ClearButton'
