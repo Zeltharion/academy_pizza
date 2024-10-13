@@ -148,7 +148,7 @@ export async function registerUser(body: Prisma.UserCreateInput) {
 			}
 		})
 
-		const code = Math.floor(100000 + Math.random() * 900000).toString();
+		const code = Math.floor(1000 + Math.random() * 9000).toString();
 
 		await prisma.verificationCode.create({
 			data: {
@@ -400,5 +400,39 @@ export async function deleteIngredient(id: number) {
 	} catch (error) {
 		console.log('[DELETE_INGREDIENT] Server error: ', error);
 		throw new Error('Server error while deleting ingredient');
+	}
+}
+
+// ADMIN ORDERS ACTIONS //
+
+export async function deleteOrder(id: number) {
+	try {
+		await prisma.order.delete({
+			where: {
+				id,
+			},
+		});
+
+		revalidatePath(urls.admin_orders);
+	} catch (error) {
+		console.log('[DELETE_ORDER] Server error: ', error);
+		throw new Error('Server error while deleting order');
+	}
+}
+
+export async function deleteOrders(ids: number[]) {
+	try {
+		await prisma.order.deleteMany({
+			where: {
+				id: {
+					in: ids,
+				},
+			},
+		});
+
+		revalidatePath(urls.admin_orders);
+	} catch (error) {
+		console.log('[DELETE_ORDERS] Server error: ', error);
+		throw new Error('Server error while deleting orders');
 	}
 }
