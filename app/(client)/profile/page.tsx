@@ -1,12 +1,13 @@
 import { Container, ProfileForm } from "@/components/shared";
 import { prisma } from "@/prisma/prismaClient";
+import urls from "@/shared/config/urls";
 import { getUserSession } from "@/shared/lib/getUserSession";
 import { redirect } from "next/navigation";
 
 export default async function ProfilePage() {
 	const session = await getUserSession()
 	if (!session) {
-		return redirect('/forbidden')
+		return redirect(urls.forbidden)
 	}
 
 	const user = await prisma.user.findFirst({
@@ -16,7 +17,7 @@ export default async function ProfilePage() {
 	})
 
 	if (!user) {
-		return redirect('/forbidden')
+		return redirect(urls.forbidden)
 	}
 
 	return (
