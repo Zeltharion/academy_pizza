@@ -1,5 +1,5 @@
 import { Nunito } from "next/font/google";
-import { Providers } from "@/components/shared";
+import { Footer, Providers } from "@/components/shared";
 import "./globals.css";
 
 const nunito = Nunito({
@@ -21,6 +21,7 @@ export default function RootLayout({
 			<body className={`${nunito.className} antialiased`}>
 				<Providers>
 					{children}
+					<Footer />
 				</Providers>
 			</body>
 		</html>
