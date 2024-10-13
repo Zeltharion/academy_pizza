@@ -49,6 +49,7 @@ export const ProductFormsContainer: React.FC<IProductFormsContainer> = ({
 					imageUrl={product.imageUrl}
 					name={product.name}
 					onSubmit={onSubmit}
+					description={product.description || ''}
 					price={firstVariant.price}
 					className={className}
 					loading={loading}

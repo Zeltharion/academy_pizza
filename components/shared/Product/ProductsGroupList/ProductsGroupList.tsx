@@ -30,9 +30,7 @@ export const ProductsGroupList: React.FC<IProductsGroupList> = ({
 	}, [categoryId, intersection?.isIntersecting, title, setActiveCategoryId]);
 
 	return (
-		<section className={cn(s.productsGroupList, className)}
-			ref={intersectionRef}
-			id={title}>
+		<section className={cn(s.productsGroupList, className)} ref={intersectionRef} id={title}>
 			<Title
 				text={title}
 				size='lg'
@@ -44,6 +42,7 @@ export const ProductsGroupList: React.FC<IProductsGroupList> = ({
 						key={product.id}
 						id={product.id}
 						name={product.name}
+						description={product.description || ''}
 						imageUrl={product.imageUrl}
 						price={product.variants[0].price}
 						ingredients={product.ingredients}
