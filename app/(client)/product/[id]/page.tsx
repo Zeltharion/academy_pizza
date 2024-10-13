@@ -36,7 +36,7 @@ export default async function ProductPage({ params: { id } }: { params: { id: st
 			<ProductsGroupList
 				title="Попробуйте также"
 				categoryId={product.category.id}
-				items={product.category.products as IProductWithRelations[]}
+				items={(product.category.products as IProductWithRelations[]).filter((p) => p.id !== product.id)}
 				listClassName={s.recommendations__list}
 			/>
 		</Container>

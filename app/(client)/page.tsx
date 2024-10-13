@@ -4,55 +4,45 @@ import {
   Filters,
   ProductsGroupList,
   Stories,
-  Title,
   TopBar
 } from "@/components/shared";
 import { findPizzas, GetSearchParams } from "@/shared/lib";
+import s from './clientPage.module.scss'
 
-export default async function Client({ searchParams }: { searchParams: GetSearchParams }) {
+export default async function ClientPage({ searchParams }: { searchParams: GetSearchParams }) {
   const categories = await findPizzas(searchParams);
 
   return (
     <>
-      <Container className="mt-10">
-        <Title
-          text="Все пиццы"
-          size="lg"
-          className="font-extrabold" />
-      </Container>
-
-
       <TopBar categories={categories.filter((category) => category.products.length > 0)} />
-
       <Stories />
+      <Container className={s.client__content}>
+        <div className={s.client__content__wrapper}>
 
-      <Container className="my-10">
-        <div className="flex gap-[80px]">
-
-          <div className="w-[250px]">
+          <div className={s.client__content__filters}>
             <Suspense>
               <Filters />
             </Suspense>
           </div>
 
-          <div className="flex-1">
-            <div className="flex flex-col gap-16">
-              {categories.map((category) => (
-                category.products.length > 0 && (
-                  <ProductsGroupList
-                    key={category.id}
-                    title={category.name}
-                    categoryId={category.id}
-                    items={category.products}
-                  />
-                )
-              ))}
+          <div className={s.client__content__products}>
+            <div className={s.client__content__products__list}>
+              <Suspense>
+                {categories.map((category) => (
+                  category.products.length > 0 && (
+                    <ProductsGroupList
+                      key={category.id}
+                      title={category.name}
+                      categoryId={category.id}
+                      items={category.products}
+                    />
+                  )
+                ))}
+              </Suspense>
             </div>
           </div>
-
         </div>
       </Container>
-
     </>
   );
 }

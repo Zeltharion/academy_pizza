@@ -1,16 +1,16 @@
 .profileForm {
 	@apply flex flex-col items-center my-10 max-w-[400px] mx-auto;
 
-	.profileForm__header {
-		@apply flex justify-between items-center;
-
-		.profileForm__header__adminBtn {
-			@apply w-full text-base flex items-center gap-1;
-		}
+	.profileForm__wrapper {
+		@apply border border-neutral-200 rounded-3xl flex flex-col p-10;
 	}
 
-	.profileForm__wrapper {
-		@apply border border-neutral-200 p-10 rounded-3xl;
+	.profileForm__header {
+		@apply flex justify-between items-center w-full;
+
+		.profileForm__header__adminBtn {
+			@apply w-full text-base flex items-center gap-1 font-semibold;
+		}
 	}
 
 	.profileForm__body {

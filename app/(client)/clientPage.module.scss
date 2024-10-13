@@ -1,0 +1,19 @@
+.client__content {
+	@apply my-10;
+
+	.client__content__wrapper {
+		@apply flex gap-[80px];
+
+		.client__content__filters {
+			@apply w-[250px];
+		}
+
+		.client__content__products {
+			@apply flex-1;
+
+			.client__content__products__list {
+				@apply flex flex-col gap-16;
+			}
+		}
+	}
+}
