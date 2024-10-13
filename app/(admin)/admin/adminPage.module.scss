@@ -1,0 +1,15 @@
+.adminPage__home {
+	@apply bg-gray-50 rounded-lg flex flex-col gap-2 justify-center items-center h-full p-4;
+
+	.adminPage__home__title {
+		@apply text-xl text-center md:text-2xl font-bold;
+
+		.adminPage__home__title__name {
+			@apply text-primary;
+		}
+	}
+
+	.adminPage__home__text {
+		@apply text-gray-500 text-center;
+	}
+}
