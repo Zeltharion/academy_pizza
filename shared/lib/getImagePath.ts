@@ -64,3 +64,8 @@ export const storyItemsImage = {
 	item4: '/assets/images/storyItems/item4.png',
 	item5: '/assets/images/storyItems/item5.png',
 }
+
+export const footerSocialImage = {
+	github: '/assets/images/footer/github.svg',
+	youtube: '/assets/images/footer/youtube.svg',
+}
