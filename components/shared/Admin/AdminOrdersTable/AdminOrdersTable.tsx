@@ -29,6 +29,8 @@ import {
 	Skeleton
 } from "@/components/ui"
 
+import { AdminDeleteButton } from "@/components/shared"
+
 import {
 	ChevronDown,
 	ChevronLeft,
@@ -98,18 +100,24 @@ export const AdminOrdersTable: React.FC = () => {
 					}
 					className="max-w-sm"
 				/>
-				<DropdownMenu>
-					<DropdownMenuTrigger asChild>
-						<Button variant="outline">
-							Настроить <ChevronDown className="ml-2 h-4 w-4" />
-						</Button>
-					</DropdownMenuTrigger>
-					<DropdownMenuContent align="end">
-						{table
-							.getAllColumns()
-							.filter((column) => column.getCanHide())
-							.map((column) => {
-								return (
+				<div className="flex gap-2">
+					{table.getSelectedRowModel().flatRows.length > 0 && (
+						<AdminDeleteButton
+							id={table.getSelectedRowModel().flatRows.map((row) => row.original.id) as number[]}
+							type="order"
+						/>
+					)}
+					<DropdownMenu>
+						<DropdownMenuTrigger asChild>
+							<Button variant="secondary">
+								Настроить <ChevronDown className="ml-2 h-4 w-4" />
+							</Button>
+						</DropdownMenuTrigger>
+						<DropdownMenuContent align="end">
+							{table
+								.getAllColumns()
+								.filter((column) => column.getCanHide())
+								.map((column) => (
 									<DropdownMenuCheckboxItem
 										key={column.id}
 										className="capitalize"
@@ -120,28 +128,26 @@ export const AdminOrdersTable: React.FC = () => {
 									>
 										{column.id}
 									</DropdownMenuCheckboxItem>
-								)
-							})}
-					</DropdownMenuContent>
-				</DropdownMenu>
+								))}
+						</DropdownMenuContent>
+					</DropdownMenu>
+				</div>
 			</div>
 			<div className={s.adminOrdersTable__body}>
 				<Table>
 					<TableHeader>
 						{table.getHeaderGroups().map((headerGroup) => (
 							<TableRow key={headerGroup.id}>
-								{headerGroup.headers.map((header) => {
-									return (
-										<TableHead key={header.id}>
-											{header.isPlaceholder
-												? null
-												: flexRender(
-													header.column.columnDef.header,
-													header.getContext()
-												)}
-										</TableHead>
-									)
-								})}
+								{headerGroup.headers.map((header) => (
+									<TableHead key={header.id}>
+										{header.isPlaceholder
+											? null
+											: flexRender(
+												header.column.columnDef.header,
+												header.getContext()
+											)}
+									</TableHead>
+								))}
 							</TableRow>
 						))}
 					</TableHeader>
@@ -163,7 +169,7 @@ export const AdminOrdersTable: React.FC = () => {
 								</TableRow>
 							))
 						) : isLoading ? (
-							<TableRow key={"loading"}>
+							<TableRow>
 								{columns.map((column) => (
 									<TableCell key={column.id}>
 										<Skeleton className="w-full h-[20px]" />
@@ -185,7 +191,7 @@ export const AdminOrdersTable: React.FC = () => {
 			</div>
 			<div className="flex items-center justify-end space-x-2">
 				<span className="flex-1 text-sm text-muted-foreground">
-					{table.getFilteredRowModel().rows.length} заказ(ов)
+					Всего: {table.getFilteredRowModel().rows.length}
 				</span>
 				<div className="space-x-2">
 					<Button
