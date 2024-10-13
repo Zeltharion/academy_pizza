@@ -1,6 +1,7 @@
 export * from './Container/Container'
 export * from './Title/Title'
 export * from './Header/Header'
+export * from './Footer/Footer'
 export * from './TopBar/TopBar'
 export * from './SearchInput/SearchInput'
 export * from './Logo/Logo'
