@@ -11,7 +11,6 @@ import { AdminForm, AdminImageUploader, FormInput } from "@/components/shared";
 import urls from "@/shared/config/urls";
 import { adminOnUploadSuccess, adminOnUploadError, adminOnClickRemoveImage } from "@/shared/lib";
 import { TCreateIngredientFormValues, createIngredientFormSchema } from "@/shared/constants";
-import s from './AdminFormCreateIngredient.module.scss'
 
 interface IAdminFormCreateIngredient {
 	values?: Ingredient

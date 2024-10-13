@@ -5,7 +5,11 @@ import { useCartStore } from "@/shared/store";
 import { PizzaForm, ProductForm } from "@/components/shared";
 import { IProductFormsContainer } from "./ProductFormsContainer.type";
 
-export const ProductFormsContainer: React.FC<IProductFormsContainer> = ({ product, onSubmit: _onSubmit }) => {
+export const ProductFormsContainer: React.FC<IProductFormsContainer> = ({
+	product,
+	onSubmit: _onSubmit,
+	className,
+}) => {
 	const { addCartItem, loading } = useCartStore();
 
 	const firstVariant = product.variants[0];
@@ -37,6 +41,7 @@ export const ProductFormsContainer: React.FC<IProductFormsContainer> = ({ produc
 					ingredients={product.ingredients}
 					variants={product.variants}
 					onSubmit={onSubmit}
+					className={className}
 					loading={loading}
 				/>
 			) : (
@@ -45,6 +50,7 @@ export const ProductFormsContainer: React.FC<IProductFormsContainer> = ({ produc
 					name={product.name}
 					onSubmit={onSubmit}
 					price={firstVariant.price}
+					className={className}
 					loading={loading}
 				/>
 			)}

@@ -7,10 +7,9 @@ import { User, UserRole } from "@prisma/client"
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import toast from "react-hot-toast";
-import { AdminDeleteButton, AdminForm, FormInput, FormSelect } from "@/components/shared";
+import { AdminForm, FormInput, FormSelect } from "@/components/shared";
 import { createUserFormSchema, TCreateUserFormValues } from "@/shared/constants";
 import urls from "@/shared/config/urls";
-import s from './AdminFormCreateUser.module.scss';
 
 interface IAdminFormCreateUser {
 	values?: User;

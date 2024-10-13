@@ -1,6 +1,6 @@
 import { prisma } from "@/prisma/prismaClient";
 import { getUserSession } from "@/shared/lib/getUserSession";
-import { Category, UserRole } from "@prisma/client";
+import { UserRole } from "@prisma/client";
 import { redirect } from "next/navigation";
 import { AdminFormCreateProduct } from "@/components/shared";
 import urls from "@/shared/config/urls";

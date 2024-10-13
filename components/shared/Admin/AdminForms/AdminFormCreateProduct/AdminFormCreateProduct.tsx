@@ -11,7 +11,6 @@ import { AdminForm, AdminImageUploader, FormInput, FormSelect } from "@/componen
 import { TCreateProductFormValues, createProductFormSchema } from "@/shared/constants";
 import { adminOnUploadSuccess, adminOnUploadError, adminOnClickRemoveImage } from "@/shared/lib";
 import urls from "@/shared/config/urls";
-import s from './AdminFormCreateProduct.module.scss'
 
 interface IAdminFormCreateProduct {
 	values?: Product & { category: Category };

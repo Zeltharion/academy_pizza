@@ -39,6 +39,7 @@ export const RegisterForm: React.FC<IRegisterForm> = ({ onClose }) => {
 
 			onClose?.();
 		} catch (error) {
+			console.error('[REGISTER_FORM] Error: ', error);
 			return toast.error('Неверная почта или пароль', {
 				icon: '❌',
 			});

@@ -15,7 +15,7 @@ export const AdminImageUploader: React.FC<IAdminImageUploader> = ({
 }) => {
 	return imageUrl ? (
 		<div className={s.adminImageUploader__image}>
-			<img src={imageUrl} />
+			<img src={imageUrl} alt="" />
 			<button
 				onClick={onClickRemoveImage}
 				className={s.adminImageUploader__image__removeBtn}
@@ -35,7 +35,7 @@ export const AdminImageUploader: React.FC<IAdminImageUploader> = ({
 						if (ready) return <div>Выберите файл</div>;
 						return "Загрузка...";
 					},
-					allowedContent({ ready, fileTypes, isUploading}) {
+					allowedContent({ ready, fileTypes, isUploading }) {
 						if (!ready) return "Ожидание...";
 						if (isUploading) return "Загружаем...";
 						return `Файлы: ${fileTypes.join(", ")}`;

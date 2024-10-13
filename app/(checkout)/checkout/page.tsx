@@ -49,7 +49,7 @@ export default function CheckoutPage() {
 		if (session) {
 			fetchUserInfo();
 		}
-	}, [session])
+	}, [session, form])
 
 	const onSubmit = async (data: TCheckoutFormValues) => {
 		try {

@@ -10,7 +10,6 @@ import { AdminForm, FormInput, FormSelect } from "@/components/shared";
 import { TCreateProductVariantFormValues, createProductVariantFormSchema, mapPizzaSize, mapPizzaType } from "@/shared/constants";
 import urls from "@/shared/config/urls";
 import { IAdminFormCreateProductVariant } from "./AdminFormCreateProductVariant.types";
-import s from './AdminFormCreateProductVariant.module.scss'
 
 export const AdminFormCreateProductVariant: React.FC<IAdminFormCreateProductVariant> = ({
 	values,

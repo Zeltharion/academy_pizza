@@ -32,9 +32,9 @@ export default async function ProductPage({ params: { id } }: { params: { id: st
 
 	return (
 		<Container className={s.productCard}>
-			<ProductFormsContainer product={product} />
+			<ProductFormsContainer product={product} className={s.productCard__forms}/>
 			<ProductsGroupList
-				title="Рекомендуем"
+				title="Попробуйте также"
 				categoryId={product.category.id}
 				items={product.category.products as IProductWithRelations[]}
 				listClassName={s.recommendations__list}

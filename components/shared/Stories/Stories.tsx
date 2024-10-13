@@ -42,8 +42,9 @@ export const Stories: React.FC = () => {
 						key={story.id}
 						onClick={() => onClickStory(story)}
 						height={250}
-						width={200}
+						width={180}
 						src={story.previewImageUrl}
+						alt={String(story.id)}
 					/>
 				))}
 			</Container>

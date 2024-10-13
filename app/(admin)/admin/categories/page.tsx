@@ -1,7 +1,7 @@
 import { prisma } from "@/prisma/prismaClient";
 import { getUserSession } from "@/shared/lib/getUserSession";
 import { UserRole } from "@prisma/client";
-import { redirect, useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 import { AdminFormCreateCategory } from "@/components/shared";
 import urls from "@/shared/config/urls";
 

@@ -10,7 +10,6 @@ import toast from "react-hot-toast";
 import { AdminForm, FormInput } from "@/components/shared";
 import { TCreateCategoryFormValues, createCategoryFormSchema } from "@/shared/constants";
 import urls from "@/shared/config/urls";
-import s from './AdminFormCreateCategory.module.scss'
 
 interface IAdminFormCreateCategory {
 	values?: Category;
