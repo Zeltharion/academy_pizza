@@ -1,87 +1,91 @@
 .adminOrderDetails {
 	@apply border rounded-lg;
 
-	.adminOrderDetails__title {
-		@apply flex items-center gap-4 mb-5;
-	}
+	.adminOrderDetails__main {
+		@apply flex flex-col p-10;
 
-	.adminOrderDetails__status {
-		@apply text-white text-sm;
-
-		&.status__succeeded {
-			@apply bg-green-400 hover:bg-green-500;
+		.adminOrderDetails__main__title {
+			@apply flex items-center gap-4 mb-5;
 		}
-
-		&.status__cancelled {
-			@apply bg-red-400 hover:bg-red-500;
-		}
-
-		&.status__pending {
-			@apply bg-gray-400 hover:bg-gray-500;
-		}
-	}
-
-	.adminOrderDetails__products__wrapper {
-		@apply flex gap-10 mt-10;
-
-		img {
-			@apply object-cover bg-secondary p-2 rounded-md;
-		}
-
-		.adminOrderDetails__products__image {
-			@apply w-[180px] h-[180px];
-		}
-
-		.adminOrderDetails__products {
-			@apply flex flex-col justify-between;
-
-			
-			.adminOrderDetails__products__title_wrapper {
-				@apply mb-5;
-
-				.adminOrderDetails__products__title {
-					@apply font-bold;
-				}
+	
+		.adminOrderDetails__main__status {
+			@apply text-white text-sm;
+	
+			&.status__succeeded {
+				@apply bg-green-400 hover:bg-green-500;
 			}
-
-			.adminOrderDetails__products__ingredients {
-				@apply flex gap-2;
-
-				.adminOrderDetails__products__ingredients__item {
-					@apply flex flex-col items-center gap-1;
-
-					img {
-						@apply w-12 h-12;
-					}
-
-					span {
-						@apply text-neutral-500;
-					}
+	
+			&.status__cancelled {
+				@apply bg-red-400 hover:bg-red-500;
+			}
+	
+			&.status__pending {
+				@apply bg-gray-400 hover:bg-gray-500;
+			}
+		}
+	
+		.adminOrderDetails__main__personalInfo {
+			@apply grid lg:grid-cols-[3fr_1fr] gap-1 p-5 border rounded-lg;
+	
+			span {
+				@apply text-neutral-500;
+	
+				b {
+					@apply text-black;
 				}
 			}
 		}
 
-		.adminOrderDetails__products__price {
-			@apply flex flex-col;
-
-			.adminOrderDetails__products__price__quantity {
-				@apply text-neutral-500 font-normal;
+		.adminOrderDetails__main__products__wrapper {
+			@apply flex gap-10 mt-10;
+	
+			img {
+				@apply object-cover bg-secondary p-2 rounded-md;
 			}
-
-			.adminOrderDetails__products__price__priceWithQuantity {
-				@apply text-primary;
+	
+			.adminOrderDetails__main__products__image {
+				@apply w-[180px] h-[180px];
 			}
-		}
-	}
-
-	.adminOrderDetails__personalInfo {
-		@apply grid lg:grid-cols-[3fr_1fr] gap-1 p-5 border rounded-lg;
-
-		span {
-			@apply text-neutral-500;
-
-			b {
-				@apply text-black;
+	
+			.adminOrderDetails__main__products {
+				@apply flex flex-col justify-between;
+	
+				
+				.adminOrderDetails__main__products__title_wrapper {
+					@apply mb-5;
+	
+					.adminOrderDetails__main__products__title {
+						@apply font-bold;
+					}
+				}
+	
+				.adminOrderDetails__main__products__ingredients {
+					@apply flex gap-2;
+	
+					.adminOrderDetails__main__products__ingredients__item {
+						@apply flex flex-col items-center gap-1;
+	
+						img {
+							@apply w-12 h-12;
+						}
+	
+						span {
+							@apply text-neutral-500;
+						}
+					}
+				}
+			}
+	
+			.adminOrderDetails__main__products__price {
+				@apply flex flex-col;
+	
+				.adminOrderDetails__main__products__price__quantity {
+					@apply text-neutral-500 font-normal;
+				}
+	
+				.adminOrderDetails__main__products__price__priceWithQuantity {
+					@apply text-primary;
+				}
 			}
 		}
 	}
