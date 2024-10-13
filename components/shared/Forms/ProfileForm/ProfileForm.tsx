@@ -11,6 +11,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import { Button } from "@/components/ui";
 import { FormInput, Title } from "@/components/shared";
 import { formRegisterSchema, TFormRegisterValues } from "@/shared/constants";
+import urls from "@/shared/config/urls";
 import { cn } from "@/shared/lib";
 import { IProfileForm } from "./ProfileForm.types";
 import s from './ProfileForm.module.scss'
@@ -63,7 +64,7 @@ export const ProfileForm: React.FC<IProfileForm> = ({
 						className="font-bold"
 					/>
 					{data.role === UserRole.ADMIN ? (
-						<Link href="/admin">
+						<Link href={urls.admin_home}>
 							<Button
 								type="button"
 								variant="secondary"

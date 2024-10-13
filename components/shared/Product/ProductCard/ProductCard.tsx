@@ -5,6 +5,7 @@ import { Title } from "@/components/shared"
 import { Button } from "@/components/ui"
 import { IProductCard } from "./ProductCard.types"
 import s from './ProductCard.module.scss'
+import urls from "@/shared/config/urls"
 
 export const ProductCard: React.FC<IProductCard> = ({
 	id,
@@ -16,7 +17,7 @@ export const ProductCard: React.FC<IProductCard> = ({
 }) => {
 	return (
 		<div className={cn(s.productCard, className)}>
-			<Link href={`/product/${id}`}>
+			<Link href={urls.client_product + `/${id}`}>
 				<div className={s.productCard__image}>
 					<img
 						className="w-[215px] h-[215px]"

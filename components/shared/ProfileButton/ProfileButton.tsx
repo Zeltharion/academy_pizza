@@ -4,6 +4,7 @@ import { Button, Skeleton } from "@/components/ui";
 import { CircleUser, User } from "lucide-react";
 import { IProfileButton } from "./ProfileButton.types";
 import s from './ProfileButton.module.scss'
+import urls from "@/shared/config/urls";
 
 export const ProfileButton: React.FC<IProfileButton> = ({
 	onClickSignIn,
@@ -25,7 +26,7 @@ export const ProfileButton: React.FC<IProfileButton> = ({
 					Войти
 				</Button>
 			) : (
-				<Link href="/profile">
+				<Link href={urls.client_profile}>
 					<Button variant="secondary" className={s.profileBtn}>
 						<CircleUser size={18} />
 						Профиль
