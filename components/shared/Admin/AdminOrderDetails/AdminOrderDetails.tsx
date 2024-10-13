@@ -49,6 +49,7 @@ export const AdminOrderDetails: React.FC<IAdminOrderDetails> = ({
 					<span>Имя: <b>{values.fullName}</b></span>
 					<span>Почта: <b>{values.email}</b></span>
 					<span>Телефон: <b>{values.phone}</b></span>
+					<span>Комментарий: <b>{values.comment}</b></span>
 				</div>
 
 				{items.map(item => (
@@ -60,17 +61,19 @@ export const AdminOrderDetails: React.FC<IAdminOrderDetails> = ({
 								className={s.adminOrderDetails__products__image}
 							/>
 							<div className={s.adminOrderDetails__products}>
-								<Title
-									text={item.productVariant.product.name}
-									size="md"
-									className={s.adminOrderDetails__products__title}
-								/>
-								{item.productVariant.pizzaType && item.productVariant.size && (
-									<p>{mapPizzaType[item.productVariant.pizzaType as keyof typeof mapPizzaType]}, {" "}
-										{mapPizzaSize[item.productVariant.size as keyof typeof mapPizzaSize].toLocaleLowerCase()}{" "}
-										({item.productVariant.size} см)
-									</p>
-								)}
+								<div className={s.adminOrderDetails__products__title_wrapper}>
+									<Title
+										text={item.productVariant.product.name}
+										size="sm"
+										className={s.adminOrderDetails__products__title}
+									/>
+									{item.productVariant.pizzaType && item.productVariant.size && (
+										<p>{mapPizzaType[item.productVariant.pizzaType as keyof typeof mapPizzaType]}, {" "}
+											{mapPizzaSize[item.productVariant.size as keyof typeof mapPizzaSize].toLocaleLowerCase()}{" "}
+											({item.productVariant.size} см)
+										</p>
+									)}
+								</div>
 								<div className={s.adminOrderDetails__products__ingredients}>
 									{item.ingredients.map((ingredient) => (
 										<div key={ingredient.id} className={s.adminOrderDetails__products__ingredients__item}>
@@ -78,7 +81,7 @@ export const AdminOrderDetails: React.FC<IAdminOrderDetails> = ({
 												src={ingredient.imageUrl}
 												alt={ingredient.name}
 											/>
-											<span>+{formatNumberToMoney(ingredient.price)}</span>
+											<span className="text-sm">+{formatNumberToMoney(ingredient.price)}</span>
 										</div>
 									))}
 								</div>
@@ -123,7 +126,7 @@ export const AdminOrderDetails: React.FC<IAdminOrderDetails> = ({
 						size="md"
 						className="font-extrabold"
 					/>
-					<b className="text-primary text-3xl">{formatNumberToMoney(Math.floor((values.totalAmount * TAX) / 100) + DELIVERY_PRICE + values.totalAmount)}</b>
+					<b className="text-primary text-3xl">{formatNumberToMoney(values.totalAmount)}</b>
 				</div>
 			</div>
 		</div>
