@@ -12,7 +12,7 @@ export const ProductModal: React.FC<IProductModal> = ({ product, className }) =>
 
 	return (
 		<Dialog open={Boolean(product)} onOpenChange={() => router.back()}>
-			<DialogTitle />
+			<DialogTitle className="visually-hidden"/>
 			<DialogContent className={cn(s.productModal, className)}>
 				<ProductFormsContainer
 					product={product}

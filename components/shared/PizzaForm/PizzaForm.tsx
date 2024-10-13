@@ -57,6 +57,11 @@ export const PizzaForm: React.FC<IPizzaForm> = ({
 					/>
 				</div>
 
+				<Title
+					size="sm"
+					text="Добавить по вкусу"
+					className="mb-3 font-bold"
+				/>
 				<div className={s.pizzaForm__ingredientsWrapper}>
 					<div className={s.pizzaForm__ingredients}>
 						{ingredients.map((ingredient) => (

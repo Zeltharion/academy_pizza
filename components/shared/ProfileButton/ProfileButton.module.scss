@@ -1,7 +1,3 @@
-.loginBtn {
-	@apply flex items-center gap-1;
-}
-
 .profileBtn {
-	@apply flex items-center gap-2;
+	@apply flex items-center text-base gap-2 font-semibold;
 }
