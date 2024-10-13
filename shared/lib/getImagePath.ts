@@ -16,6 +16,10 @@ export const ingredientImage = {
 	redOnion: '/assets/images/ingredients/redOnion.png',
 	spicyChorizo: '/assets/images/ingredients/spicyChorizo.png',
 	sugarPepper: '/assets/images/ingredients/sugarPepper.png',
+	bacon: '/assets/images/ingredients/bacon.png',
+	shrimps: '/assets/images/ingredients/shrimps.png',
+	bavarianSausages: '/assets/images/ingredients/bavarianSausages.png',
+	olives: '/assets/images/ingredients/olives.png',
 }
 
 export const productImage = {
@@ -23,24 +27,40 @@ export const productImage = {
 	bakedPotatoWithSauce: '/assets/images/products/bakedPotatoWithSauce.png',
 	bananaMilkshake: '/assets/images/products/bananaMilkshake.png',
 	caramelAppleMilkshake: '/assets/images/products/caramelAppleMilkshake.png',
-	caramelCappuccino: '/assets/images/products/caramelCappuccino.png',
-	chickenNuggets: '/assets/images/products/chickenNuggets.png',
+	pinaColadaMilkshake: '/assets/images/products/pinaColadaMilkshake.png',
 	classicMilkshake: '/assets/images/products/classicMilkshake.png',
+	oreoCookieMilkshake: '/assets/images/products/oreoCookieMilkshake.png',
+	caramelCappuccino: '/assets/images/products/caramelCappuccino.png',
+	irishCappuccino: '/assets/images/products/irishCappuccino.png',
 	coconutLatte: '/assets/images/products/coconutLatte.png',
+	latte: '/assets/images/products/latte.png',
+	chickenNuggets: '/assets/images/products/chickenNuggets.png',
 	danwichHamAndCheese: '/assets/images/products/danwichHamAndCheese.png',
 	dodster: '/assets/images/products/dodster.png',
-	irishCappuccino: '/assets/images/products/irishCappuccino.png',
-	latte: '/assets/images/products/latte.png',
+	spicyDodster: '/assets/images/products/spicyDodster.png',
 	omeletteWithHamAndMushrooms: '/assets/images/products/omeletteWithHamAndMushrooms.png',
 	omeletteWithPepperoni: '/assets/images/products/omeletteWithPepperoni.png',
-	oreoCookieMilkshake: '/assets/images/products/oreoCookieMilkshake.png',
-	spicyDodster: '/assets/images/products/spicyDodster.png',
+	omeletteWithBacon: '/assets/images/products/omeletteWithBacon.png',
+	omeletteWithCheese: '/assets/images/products/omeletteWithCheese.png',
+	chickenWingsBarbecue: '/assets/images/products/chickenWingsBarbecue.png',
+	lunchboxChickenPieces: '/assets/images/products/lunchboxChickenPieces.png',
+	lunchboxChickenWings: '/assets/images/products/lunchboxChickenWings.png',
+	starterWithMushrooms: '/assets/images/products/starterWithMushrooms.png',
+	starterWithCheese: '/assets/images/products/starterWithCheese.png',
+	saladCaesar: '/assets/images/products/saladCaesar.png',
 }
 
 export const pizzaImage = {
 	cheese: '/assets/images/pizza/cheese.png',
 	chorizoFresh: '/assets/images/pizza/chorizoFresh.png',
 	pepperoniFresh: '/assets/images/pizza/pepperoniFresh.png',
+	burger: '/assets/images/pizza/burger.png',
+	diablo: '/assets/images/pizza/diablo.png',
+	doubleChicken: '/assets/images/pizza/doubleChicken.png',
+	fourSeasons: '/assets/images/pizza/fourSeasons.png',
+	hamAndCheese: '/assets/images/pizza/hamAndCheese.png',
+	julienne: '/assets/images/pizza/julienne.png',
+	meatMixBavarianSausages: '/assets/images/pizza/meatMixBavarianSausages.png',
 }
 
 export const oauthImage = {
