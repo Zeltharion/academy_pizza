@@ -3,19 +3,14 @@
   "version": "0.3.0",
   "private": true,
   "scripts": {
-    "dev": "dotenv -e .env.local next dev",
-    "build": "dotenv -e .env.production next build",
-    "start": "dotenv -e .env.production next start",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
     "lint": "next lint",
-    "prisma:generate": "prisma generate",
-    "prisma:migrate": "prisma migrate dev",
-    "prisma:studio": "prisma studio",
-    "prisma:reset": "prisma migrate reset",
     "prisma:push": "prisma db push",
-    "prisma:preview": "prisma db pull",
+    "prisma:studio": "prisma studio",
     "prisma:seed": "prisma db seed",
-    "prisma:dev": "dotenv -e .env.local -- npx prisma migrate dev",
-    "prisma:deploy": "dotenv -e .env.production -- npx prisma migrate deploy"
+    "postinstall": "prisma generate"
   },
   "prisma": {
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
