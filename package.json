@@ -1,6 +1,6 @@
 {
   "name": "academy_pizza",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "scripts": {
     "dev": "dotenv -e .env.local next dev",
@@ -55,6 +55,7 @@
     "react-use": "^17.5.1",
     "resend": "^4.0.0",
     "sass": "^1.79.3",
+    "sharp": "^0.33.5",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",
     "ts-node": "^10.9.2",
