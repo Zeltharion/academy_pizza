@@ -37,6 +37,6 @@ export async function GET(req: NextRequest) {
 		return NextResponse.redirect(new URL('/?verified', req.url))
 	} catch (error) {
 		console.error("[API_VERIFY]: ", error);
-
+		return NextResponse.json({ message: 'Server error' }, { status: 500 });
 	}
 }

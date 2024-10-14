@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { Button, Skeleton } from "@/components/ui";
-import { CircleUser, User } from "lucide-react";
+import { CircleUser } from "lucide-react";
 import { cn } from "@/shared/lib";
 import urls from "@/shared/config/urls";
 import { IProfileButton } from "./ProfileButton.types";
@@ -32,4 +32,4 @@ export const ProfileButton: React.FC<IProfileButton> = ({
 		</Link>
 	)
 }
-	
+

@@ -3,6 +3,7 @@ import { prisma } from "@/prisma/prismaClient";
 import urls from "@/shared/config/urls";
 import { getUserSession } from "@/shared/lib/getUserSession";
 import { redirect } from "next/navigation";
+import { Suspense } from "react";
 
 export default async function ProfilePage() {
 	const session = await getUserSession()
@@ -22,7 +23,9 @@ export default async function ProfilePage() {
 
 	return (
 		<Container>
-			<ProfileForm data={user}/>
+			<Suspense>
+				<ProfileForm data={user} />
+			</Suspense>
 		</Container>
 	)
 }
