@@ -1,0 +1,7 @@
+.adminLayout {
+	@apply min-h-screen;
+
+	.adminLayout__wrapper {
+		@apply mt-10 grid grid-cols-[0.8fr,4fr] gap-10;
+	}
+}

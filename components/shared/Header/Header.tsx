@@ -42,7 +42,7 @@ export const Header: React.FC<IHeader> = ({
 				router.push('/');
 			}, 1000);
 		}
-	}, [])
+	}, [router, searchParams]);
 
 	return (
 		<header className={cn(s.header, classname)}>

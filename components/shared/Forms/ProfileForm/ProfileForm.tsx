@@ -2,12 +2,16 @@
 
 import { updateUserInfo } from "@/app/actions";
 import { signOut } from "next-auth/react";
+import { UserRole } from "@prisma/client";
+import Link from "next/link";
+import toast from "react-hot-toast";
+import { Settings } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, useForm } from "react-hook-form";
-import toast from "react-hot-toast";
 import { Button } from "@/components/ui";
 import { FormInput, Title } from "@/components/shared";
 import { formRegisterSchema, TFormRegisterValues } from "@/shared/constants";
+import urls from "@/shared/config/urls";
 import { cn } from "@/shared/lib";
 import { IProfileForm } from "./ProfileForm.types";
 import s from './ProfileForm.module.scss'
@@ -53,11 +57,26 @@ export const ProfileForm: React.FC<IProfileForm> = ({
 	return (
 		<div className={cn(s.profileForm, className)}>
 			<div className={s.profileForm__wrapper}>
-				<Title
-					text="Личные данные"
-					size="md"
-					className="font-bold"
-				/>
+				<header className={s.profileForm__header}>
+					<Title
+						text="Личные данные"
+						size="md"
+						className="font-bold"
+					/>
+					{data.role === UserRole.ADMIN ? (
+						<Link href={urls.admin_home}>
+							<Button
+								type="button"
+								variant="secondary"
+								className={s.profileForm__header__adminBtn}
+							>
+								<Settings size={18}/>
+								Админ
+							</Button>
+						</Link>
+					) : null}
+				</header>
+
 				<FormProvider {...form}>
 					<form className={s.profileForm__body} onSubmit={form.handleSubmit(onSubmit)}>
 						<FormInput name="email" label="E-Mail" required />
@@ -84,8 +103,8 @@ export const ProfileForm: React.FC<IProfileForm> = ({
 
 						<Button
 							type="button"
-							className={s.profileForm__signOutBtn}
-							variant="secondary"
+							variant="destructive"
+							className="text-base"
 							onClick={onClickSignOut}
 							loading={form.formState.isSubmitting}
 						>

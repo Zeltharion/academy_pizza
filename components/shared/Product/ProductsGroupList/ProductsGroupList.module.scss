@@ -1,7 +1,8 @@
 .productsGroupList {
+	@apply flex flex-col gap-5;
 
 	.productsGroupList__title {
-		@apply font-extrabold mb-5;
+		@apply font-extrabold;
 	}
 
 	.productsGroupList__list {

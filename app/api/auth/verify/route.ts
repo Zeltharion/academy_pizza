@@ -1,6 +1,8 @@
 import { prisma } from "@/prisma/prismaClient";
 import { NextRequest, NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(req: NextRequest) {
 	try {
 		const code = req.nextUrl.searchParams.get('code');
@@ -37,6 +39,5 @@ export async function GET(req: NextRequest) {
 		return NextResponse.redirect(new URL('/?verified', req.url))
 	} catch (error) {
 		console.error("[API_VERIFY]: ", error);
-
 	}
 }

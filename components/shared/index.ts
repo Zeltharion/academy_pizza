@@ -1,6 +1,7 @@
 export * from './Container/Container'
 export * from './Title/Title'
 export * from './Header/Header'
+export * from './Footer/Footer'
 export * from './TopBar/TopBar'
 export * from './SearchInput/SearchInput'
 export * from './Logo/Logo'
@@ -31,6 +32,10 @@ export * from './EmailTemplates'
 
 export * from './ProfileButton/ProfileButton'
 export * from './OAuthButton/OAuthButton'
+
+export * from './Stories/Stories'
+
+export * from './Admin'
 
 export * from './modals'
 

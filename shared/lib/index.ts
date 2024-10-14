@@ -13,6 +13,9 @@ export * from './formatIngredientsArrayToText'
 export * from './sendEmail';
 export * from './createPayment'
 
+export * from './adminIsSubPath'
+export * from './adminUploadUtils'
+
 export * from './getImagePath';
 export * from './utils';
 export * from './formatNumberToMoney';

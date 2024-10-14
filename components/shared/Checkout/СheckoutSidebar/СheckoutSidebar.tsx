@@ -5,8 +5,8 @@ import { cn, formatNumberToMoney } from '@/shared/lib';
 import { ICheckoutSidebar } from './CheckoutSidebar.type';
 import s from './СheckoutSidebar.module.scss'
 
-const TAX = 1.5;
-const DELIVERY_PRICE = 250;
+export const TAX = 1.5;
+export const DELIVERY_PRICE = 250;
 
 export const CheckoutSidebar: React.FC<ICheckoutSidebar> = ({
 	loading,

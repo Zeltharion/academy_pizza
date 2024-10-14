@@ -9,6 +9,7 @@ import { cn } from "@/shared/lib/utils"
 import { Search } from "lucide-react"
 import { Api } from "@/shared/services"
 import s from './SearchInput.module.scss'
+import urls from "@/shared/config/urls"
 
 interface ISearchInput {
 	className?: string
@@ -60,7 +61,7 @@ export const SearchInput: React.FC<ISearchInput> = ({ className }) => {
 						{products.map((product) => (
 							<Link
 								key={product.id}
-								href={`/product/${product.id}`}
+								href={urls.client_product + `/${product.id}`}
 								className={s.searchInput__popUp__item}
 								onClick={handleOnClickProductItem}
 							>

@@ -5,6 +5,7 @@ export interface IProductCard {
 	name: string;
 	price: number;
 	imageUrl: string;
+	description: string;
 	ingredients: Ingredient[];
 	className?: string;
 }

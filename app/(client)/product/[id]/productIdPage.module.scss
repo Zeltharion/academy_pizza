@@ -1,3 +1,11 @@
 .productCard {
-	@apply my-10 flex flex-col;
+	@apply my-10 flex flex-col gap-10;
+
+	.productCard__forms {
+		@apply border rounded-lg;
+	}
+
+	.recommendations__list {
+		@apply grid xl:!grid-cols-4;
+	}
 }

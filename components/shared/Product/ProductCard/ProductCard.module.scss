@@ -1,7 +1,12 @@
 .productCard {
+	@apply flex flex-col justify-between h-full;
 
 	.productCard__image {
-		@apply flex justify-center p-6 bg-secondary rounded-lg h-[260px];
+		@apply flex items-center justify-center bg-secondary rounded-lg ;
+
+		img {
+			@apply hover:top-1 transition-transform relative p-6 max-h-[250px];
+		}
 	}
 
 	.productCard__title {
@@ -9,10 +14,17 @@
 	}
 
 	.productCard__igredients {
-		@apply text-sm text-gray-400;
+		@apply text-base text-gray-500;
 	}
 
 	.productCard__footer {
 		@apply flex justify-between items-center mt-4;
+
+		.productCard__footer__price {
+			@apply text-[20px];
+		}
+		.productCard__footer__cartBtn {
+			@apply text-base font-bold;
+		}
 	}
 }

@@ -3,6 +3,7 @@ import { ArrowLeft } from "lucide-react";
 import { cn } from "@/shared/lib";
 import { Button } from "@/components/ui";
 import { Title } from "@/components/shared";
+import urls from "@/shared/config/urls";
 import { IInfoBlock } from "./InfoBlock.types";
 import s from './InfoBlock.module.scss'
 
@@ -21,7 +22,7 @@ export const InfoBlock: React.FC<IInfoBlock> = ({
 				</div>
 
 				<div className={s.infoBlock__buttons}>
-					<Link href="/">
+					<Link href={urls.client_home}>
 						<Button variant="outline" className="gap-2">
 							<ArrowLeft />
 							На главную

@@ -8,6 +8,10 @@ import { TCheckoutFormValues } from "@/shared/constants";
 import { createPayment, sendEmail } from "@/shared/lib";
 import { getUserSession } from "@/shared/lib/getUserSession";
 import { hashSync } from "bcrypt";
+import { revalidatePath } from "next/cache";
+import urls from "@/shared/config/urls";
+
+// CLIENT ACTIONS //
 
 export async function createOrder(data: TCheckoutFormValues) {
 	try {
@@ -144,7 +148,7 @@ export async function registerUser(body: Prisma.UserCreateInput) {
 			}
 		})
 
-		const code = Math.floor(100000 + Math.random() * 900000).toString();
+		const code = Math.floor(1000 + Math.random() * 9000).toString();
 
 		await prisma.verificationCode.create({
 			data: {
@@ -162,5 +166,273 @@ export async function registerUser(body: Prisma.UserCreateInput) {
 	} catch (error) {
 		console.log('[REGISTER_USER] Server error: ', error);
 		throw new Error('Server error while registering user');
+	}
+}
+
+// USERS ADMIN ACTIONS //
+export async function updateUser(id: number, data: Prisma.UserUpdateInput) {
+	try {
+		await prisma.user.update({
+			where: {
+				id,
+			},
+			data: {
+				...data,
+				verified: new Date(),
+				...(data.password && { password: hashSync(String(data.password), 10) }),
+			},
+		});
+	} catch (error) {
+		console.log('[UPDATE_USER] Server error: ', error);
+		throw new Error('Server error while updating user');
+	}
+}
+
+export async function createUser(data: Prisma.UserCreateInput) {
+	try {
+		await prisma.user.create({
+			data: {
+				...data,
+				verified: new Date(),
+				password: hashSync(data.password, 10),
+			},
+		});
+
+		revalidatePath(urls.admin_users);
+	} catch (error) {
+		console.log('[CREATE_USER] Server error:', error);
+		throw new Error('Server error while creating user');
+	}
+}
+
+export async function deleteUser(id: number) {
+	try {
+		await prisma.user.delete({
+			where: {
+				id,
+			},
+		});
+
+		revalidatePath(urls.admin_users)
+	} catch (error) {
+		console.log('[DELETE_USER] Server error: ', error);
+		throw new Error('Server error while deleting user');
+	}
+}
+
+// CATEGORIES ADMIN ACTIONS //
+export async function updateCategory(id: number, data: Prisma.CategoryUpdateInput) {
+	try {
+		await prisma.category.update({
+			where: {
+				id,
+			},
+			data,
+		});
+	} catch (error) {
+		console.log('[UPDATE_CATEGORY] Server error: ', error);
+		throw new Error('Server error while updating category');
+	}
+}
+
+export async function createCategory(data: Prisma.CategoryCreateInput) {
+	try {
+		await prisma.category.create({
+			data,
+		});
+
+		revalidatePath(urls.admin_categories);
+	} catch (error) {
+		console.log('[CREATE_CATEGORY] Server error:', error);
+		throw new Error('Server error while creating category');
+	}
+}
+
+export async function deleteCategory(id: number) {
+	try {
+		await prisma.category.delete({
+			where: {
+				id,
+			},
+		});
+
+		revalidatePath(urls.admin_categories);
+	} catch (error) {
+		console.log('[DELETE_CATEGORY] Server error: ', error);
+		throw new Error('Server error while deleting category');
+	}
+}
+
+// PRODUCTS ADMIN ACTIONS //
+export async function updateProduct(id: number, data: Prisma.ProductUpdateInput) {
+	try {
+		await prisma.product.update({
+			where: {
+				id,
+			},
+			data,
+		});
+	} catch (error) {
+		console.log('[UPDATE_PRODUCT] Server error: ', error);
+		throw new Error('Server error while updating product');
+	}
+}
+
+export async function createProduct(data: Prisma.ProductCreateInput) {
+	try {
+		await prisma.product.create({
+			data,
+		});
+
+		revalidatePath(urls.admin_products);
+	} catch (error) {
+		console.log('[CREATE_PRODUCT] Server error: ', error);
+		throw new Error('Server error while creating product');
+	}
+}
+
+export async function deleteProduct(id: number) {
+	try {
+		await prisma.product.delete({
+			where: {
+				id,
+			},
+		});
+
+		revalidatePath(urls.admin_products);
+	} catch (error) {
+		console.log("[DELETE_PRODUCT] Server error: ", error);
+		throw new Error("Server error while deleting product");
+	}
+}
+
+// PRODUCT VARIANTS ADMIN ACTIONS //
+
+export async function updateProductVariant(id: number, data: Prisma.ProductVariantUpdateInput) {
+	try {
+		await prisma.productVariant.update({
+			where: {
+				id,
+			},
+			data,
+		});
+	} catch (error) {
+		console.log('[UPDATE_PRODUCT_VARIANT] Server error: ', error);
+		throw new Error('Server error while updating product variant');
+	}
+}
+
+export async function createProductVariant(data: Prisma.ProductVariantUncheckedCreateInput) {
+	try {
+		await prisma.productVariant.create({
+			data: {
+				price: data.price,
+				size: data.size,
+				pizzaType: data.pizzaType,
+				productId: data.productId,
+			},
+		});
+
+		revalidatePath(urls.admin_product_variants);
+	} catch (error) {
+		console.log('[CREATE_PRODUCT_VARIANT] Server error: ', error);
+		throw new Error('Server error while creating product variant');
+	}
+}
+
+export async function deleteProductVariant(id: number) {
+	try {
+		await prisma.productVariant.delete({
+			where: {
+				id,
+			},
+		});
+
+		revalidatePath(urls.admin_product_variants);
+	} catch (error) {
+		console.log('[DELETE_PRODUCT_VARIANT] Server error: ', error);
+		throw new Error('Server error while deleting product variant');
+	}
+}
+
+// INGREDIENTS ADMIN ACTIONS //
+
+export async function updateIngredient(id: number, data: Prisma.IngredientUpdateInput) {
+	try {
+		await prisma.ingredient.update({
+			where: {
+				id,
+			},
+			data,
+		});
+	} catch (error) {
+		console.log('[UPDATE_INGREDIENT] Server error: ', error);
+		throw new Error('Server error while updating ingredient');
+	}
+}
+
+export async function createIngredient(data: Prisma.IngredientCreateInput) {
+	try {
+		await prisma.ingredient.create({
+			data: {
+				name: data.name,
+				imageUrl: data.imageUrl,
+				price: data.price,
+			},
+		});
+
+		revalidatePath(urls.admin_ingredients);
+	} catch (error) {
+		console.log('[CREATE_INGREDIENT] Server error: ', error);
+		throw new Error('Server error while creating ingredient');
+	}
+}
+
+export async function deleteIngredient(id: number) {
+	try {
+		await prisma.ingredient.delete({
+			where: {
+				id,
+			},
+		});
+
+		revalidatePath(urls.admin_ingredients);
+	} catch (error) {
+		console.log('[DELETE_INGREDIENT] Server error: ', error);
+		throw new Error('Server error while deleting ingredient');
+	}
+}
+
+// ADMIN ORDERS ACTIONS //
+
+export async function deleteOrder(id: number) {
+	try {
+		await prisma.order.delete({
+			where: {
+				id,
+			},
+		});
+
+		revalidatePath(urls.admin_orders);
+	} catch (error) {
+		console.log('[DELETE_ORDER] Server error: ', error);
+		throw new Error('Server error while deleting order');
+	}
+}
+
+export async function deleteOrders(ids: number[]) {
+	try {
+		await prisma.order.deleteMany({
+			where: {
+				id: {
+					in: ids,
+				},
+			},
+		});
+
+		revalidatePath(urls.admin_orders);
+	} catch (error) {
+		console.log('[DELETE_ORDERS] Server error: ', error);
+		throw new Error('Server error while deleting orders');
 	}
 }

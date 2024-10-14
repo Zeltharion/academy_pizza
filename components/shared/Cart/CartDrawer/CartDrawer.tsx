@@ -17,6 +17,7 @@ import {
 import { CartDrawerItem, Title } from "@/components/shared";
 import { cn, formatNumberToMoney, getCartItemsDetail, getCartTotalItemsWord } from "@/shared/lib";
 import { PizzaSize, PizzaType } from "@/shared/constants/pizza";
+import urls from "@/shared/config/urls";
 import { useCart } from "@/shared/hooks";
 import s from './CartDrawer.module.scss'
 
@@ -107,7 +108,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
 								</div>
 							</div>
 
-							<Link href="/checkout">
+							<Link href={urls.client_checkout}>
 								<Button
 									type="submit"
 									loading={rederecting}

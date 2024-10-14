@@ -10,6 +10,7 @@ export const ProductForm: React.FC<IProductForm> = ({
 	name,
 	price,
 	loading,
+	description,
 	onSubmit,
 	className,
 }) => {
@@ -21,7 +22,10 @@ export const ProductForm: React.FC<IProductForm> = ({
 			</div>
 
 			<div className={s.productForm__info}>
-				<Title text={name} size="md" className="font-extrabold mb-1" />
+				<div>
+					<Title text={name} size="md" className="font-extrabold mb-1" />
+					<p className="text-gray-400">{description}</p>
+				</div>
 				<Button
 					className={s.productForm__button}
 					onClick={() => onSubmit?.()}
