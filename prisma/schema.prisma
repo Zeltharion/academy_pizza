@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
     provider  = "postgresql"
-    url       = env("POSTGRES_URL")
+    url       = env("POSTGRES_PRISMA_URL")
     directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
@@ -60,13 +60,13 @@ model Product {
 }
 
 model ProductVariant {
-    id          Int        @id @default(autoincrement())
-    price       Int
-    size        Int?
-    pizzaType   Int?
-    product     Product    @relation(fields: [productId], references: [id])
-    productId   Int
-    cartItems   CartItem[]
+    id        Int        @id @default(autoincrement())
+    price     Int
+    size      Int?
+    pizzaType Int?
+    product   Product    @relation(fields: [productId], references: [id])
+    productId Int
+    cartItems CartItem[]
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
