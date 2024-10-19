@@ -7,8 +7,9 @@ interface IAdminUploadUtilsType {
 
 export const adminOnUploadSuccess = <T extends IAdminUploadUtilsType>(setValue: UseFormSetValue<T>) => (url: string) => {
 	setValue("imageUrl" as Path<T>, url as PathValue<T, Path<T>>);
-	toast.success("Файл успешно загружен!", {
-		icon: "👏",
+	console.log("[UPLOAD_FILE] Success: ", url);
+	toast.error("Файл успешно загружен", {
+		icon: "✅",
 	});
 };
 

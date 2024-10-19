@@ -14,7 +14,7 @@ import {
 	SheetTitle,
 	SheetTrigger
 } from "@/components/ui";
-import { CartDrawerItem, Title } from "@/components/shared";
+import { CartDrawerItem, CartEmpty, Title } from "@/components/shared";
 import { cn, formatNumberToMoney, getCartItemsDetail, getCartTotalItemsWord } from "@/shared/lib";
 import { PizzaSize, PizzaType } from "@/shared/constants/pizza";
 import urls from "@/shared/config/urls";
@@ -24,7 +24,7 @@ import s from './CartDrawer.module.scss'
 export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
 	const { totalAmount, items, updateItemQuantity, removeCartItem } = useCart();
 	const [rederecting, setRederecting] = useState(false);
-	
+
 	const handleOnClickCountButton = (id: number, type: 'plus' | 'minus', quantity: number) => {
 		const newQuantity = type === 'plus' ? quantity + 1 : quantity - 1;
 
@@ -49,30 +49,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
 					</SheetHeader>
 				)}
 
-				{!totalAmount && (
-					<div className={s.cartDrawer__empty}>
-						<Image
-							src="/assets/images/emptyCartBox.png"
-							alt="Empty cart"
-							width={120}
-							height={120}
-						/>
-						<Title
-							size="md"
-							text="Корзина пустая"
-							className={s.cartDrawer__emptyTitle}
-						/>
-						<p className={s.cartDrawer__emptyText}>
-							Добавьте хотя бы один пиццу в корзину, а можно и две :&#41;
-						</p>
-						<SheetClose>
-							<Button className={s.cartDrawer__emptyButton} size="lg">
-								<ArrowLeft className="w-5 mr-2" />
-								Вернуться назад
-							</Button>
-						</SheetClose>
-					</div>
-				)}
+				{!totalAmount && <CartEmpty drawer />}
 
 				{totalAmount > 0 && (
 					<>

@@ -1,0 +1,15 @@
+.cartEmpty {
+	@apply flex flex-col items-center justify-center w-72 mx-auto;
+
+	.cartEmpty__title {
+		@apply text-center font-bold my-2;
+	}
+
+	.cartEmpty__text {
+		@apply text-center text-neutral-500 mb-5;
+	}
+
+	.cartEmpty__button {
+		@apply w-56 h-12 text-base;
+	}
+}

@@ -1,9 +1,9 @@
 import { Order } from "@prisma/client";
 import { Badge } from "@/components/ui";
-import { DELIVERY_PRICE, TAX, Title } from "@/components/shared";
+import { Title } from "@/components/shared";
 import { cn, formatNumberToMoney } from "@/shared/lib";
 import { CartItemDTO } from "@/shared/dto";
-import { mapPizzaSize, mapPizzaType } from "@/shared/constants";
+import { DELIVERY_PRICE, mapPizzaSize, mapPizzaType, TAX } from "@/shared/constants";
 import s from './AdminOrderDetails.module.scss'
 
 interface IAdminOrderDetails {

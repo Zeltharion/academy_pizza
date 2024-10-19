@@ -44,7 +44,7 @@ export const FormInput: React.FC<IFormInput> = ({
 			<div className="relative">
 				<Input
 					type={type === 'password' ? (showPassword ? 'text' : 'password') : type}
-					className={cn(s.formInput__input)}
+					className={cn(s.formInput__input, inputError && 'border-red-400')}
 					{...register(name)}
 					{...props}
 				/>

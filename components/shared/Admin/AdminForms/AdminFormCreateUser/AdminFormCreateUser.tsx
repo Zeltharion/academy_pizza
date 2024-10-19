@@ -48,6 +48,7 @@ export const AdminFormCreateUser: React.FC<IAdminFormCreateUser> = ({ values }) 
 				router.push(urls.admin_users);
 			}
 
+			toast.success('Пользователь создан', { icon: '✅' });
 		} catch (error) {
 			console.log('[CREATE_USER] Error: ', error);
 			toast.error('Произошла ошибка');

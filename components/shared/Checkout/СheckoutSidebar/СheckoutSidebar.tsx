@@ -4,9 +4,9 @@ import { CheckoutDetails, WhiteBlock } from '@/components/shared'
 import { cn, formatNumberToMoney } from '@/shared/lib';
 import { ICheckoutSidebar } from './CheckoutSidebar.type';
 import s from './СheckoutSidebar.module.scss'
+import { DELIVERY_PRICE, TAX } from '@/shared/constants';
 
-export const TAX = 1.5;
-export const DELIVERY_PRICE = 250;
+
 
 export const CheckoutSidebar: React.FC<ICheckoutSidebar> = ({
 	loading,
@@ -14,13 +14,12 @@ export const CheckoutSidebar: React.FC<ICheckoutSidebar> = ({
 	className
 }) => {
 	const taxPrice = Math.floor((totalAmount * TAX) / 100);
-	const totalPrice = totalAmount + taxPrice + DELIVERY_PRICE;
 
 	return (
 		<WhiteBlock className={cn(s.checkoutSidebar, className)}>
 			<div className={s.checkoutSidebar__total}>
 				<span className={s.checkoutSidebar__total__text}>Итого:</span>
-				{loading ? <Skeleton className="h-8 w-20" /> : <span className={s.checkoutSidebar__total__price}>{formatNumberToMoney(totalPrice)}</span>}
+				{loading ? <Skeleton className="h-8 w-20" /> : <span className={s.checkoutSidebar__total__price}>{formatNumberToMoney(totalAmount)}</span>}
 			</div>
 
 			<CheckoutDetails

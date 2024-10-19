@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 export const adminNameSchema = z.string().min(2, { message: 'Введите название' });
 export const adminPriceSchema = z.string().min(1, { message: 'Введите цену' });
-export const adminImageUrlSchema = z.string().min(1, { message: 'Введите ссылку на картинку' });
+export const adminImageUrlSchema = z.string().min(1, { message: 'Загрузите картинку' });
 
 export const createUserFormSchema = z.object({
 	fullName: z.string().min(4, { message: 'Введите корректное имя' }),
@@ -21,6 +21,7 @@ export const createProductVariantFormSchema = z.object({
 export const createProductFormSchema = z.object({
 	name: adminNameSchema,
 	imageUrl: adminImageUrlSchema,
+	description: z.string().optional(),
 	category: z.string().min(1, { message: 'Выберите категорию' }),
 });
 

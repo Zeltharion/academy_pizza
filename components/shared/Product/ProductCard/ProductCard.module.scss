@@ -2,7 +2,7 @@
 	@apply flex flex-col justify-between h-full;
 
 	.productCard__image {
-		@apply flex items-center justify-center bg-secondary rounded-lg ;
+		@apply flex items-center justify-center bg-secondary rounded-lg min-h-[250px];
 
 		img {
 			@apply hover:top-1 transition-transform relative p-6 max-h-[250px];

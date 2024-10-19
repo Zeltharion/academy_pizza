@@ -14,12 +14,12 @@ export default function ClientLayout({
   modal: React.ReactNode;
 }>) {
   return (
-    <main className="min-h-screen">
+    <>
       <Suspense>
         <Header />
       </Suspense>
       {children}
       {modal}
-    </main>
+    </>
   );
 }
