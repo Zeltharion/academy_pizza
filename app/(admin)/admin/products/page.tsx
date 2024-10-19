@@ -25,7 +25,11 @@ export default async function AdminProducts() {
 		return redirect(urls.notFound)
 	}
 
-	const category = await prisma.category.findMany()
+	const category = await prisma.category.findMany({
+		include: {
+			products: true
+		}
+	})
 
 	return (
 		<AdminFormCreateProduct category={category}/>	
