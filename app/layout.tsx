@@ -18,12 +18,13 @@ export default function RootLayout({
 			<head>
 				<link data-rh="true" rel="icon" href="/favicon.ico" />
 			</head>
-			<body className={`${nunito.className} antialiased`}>
+			<body className={`${nunito.className} antialiased min-h-screen flex flex-col`}>
 				<Providers>
-					{children}
-					<Footer />
+					<main className="flex-1">{children}</main>
+					<Footer className="mt-auto" />
 				</Providers>
 			</body>
 		</html>
 	);
 }
+

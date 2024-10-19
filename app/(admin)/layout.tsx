@@ -12,7 +12,7 @@ export default function AdminLayout({
   children: React.ReactNode
 }) {
   return (
-    <main className={s.adminLayout}>
+    <>
       <Suspense>
         <Header
           hasSearchInput={false}
@@ -25,6 +25,6 @@ export default function AdminLayout({
           {children}
         </section>
       </Container>
-    </main>
+    </>
   )
 }
