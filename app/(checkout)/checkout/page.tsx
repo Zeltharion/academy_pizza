@@ -1,7 +1,10 @@
 'use client'
 
 import { useEffect, useState } from 'react';
+import { useSession } from 'next-auth/react';
+import { createOrder } from '@/app/actions';
 import { FormProvider, useForm } from 'react-hook-form'
+import toast from 'react-hot-toast';
 import { zodResolver } from '@hookform/resolvers/zod'
 import {
 	Container,
@@ -10,19 +13,19 @@ import {
 	CheckoutFormAddress,
 	CheckoutFormPersonal,
 	CheckoutSidebar,
+	CartEmpty,
 } from "@/components/shared";
-import { checkoutFormSchema, TCheckoutFormValues } from '@/shared/constants';
+import { Api } from '@/shared/services';
+import { checkoutFormSchema, DELIVERY_PRICE, TAX, TCheckoutFormValues } from '@/shared/constants';
 import { useCart } from "@/shared/hooks";
 import s from './checkoutPage.module.scss'
-import { createOrder } from '@/app/actions';
-import toast from 'react-hot-toast';
-import { useSession } from 'next-auth/react';
-import { Api } from '@/shared/services';
 
 export default function CheckoutPage() {
 	const [submitting, setSubmitting] = useState(false);
 	const { totalAmount, items, updateItemQuantity, removeCartItem, loading } = useCart();
 	const { data: session } = useSession()
+	const taxPrice = Math.floor((totalAmount * TAX) / 100);
+	const totalPrice = totalAmount + taxPrice + DELIVERY_PRICE;
 
 	const form = useForm<TCheckoutFormValues>({
 		resolver: zodResolver(checkoutFormSchema),
@@ -83,29 +86,33 @@ export default function CheckoutPage() {
 				className={s.checkoutPage__title}
 			/>
 
-			<FormProvider {...form}>
-				<form onSubmit={form.handleSubmit(onSubmit)}>
-					<div className={s.checkoutPage__blocks}>
-						<div className={s.checkoutPage__blocks__left}>
-							<CheckoutCart
-								onClickCountButton={onClickCountButton}
-								removeCartItem={removeCartItem}
-								loading={loading}
-								items={items}
-							/>
-							<CheckoutFormPersonal />
-							<CheckoutFormAddress />
-						</div>
+			{items.length !== 0 && (
+				<FormProvider {...form}>
+					<form onSubmit={form.handleSubmit(onSubmit)}>
+						<div className={s.checkoutPage__blocks}>
+							<div className={s.checkoutPage__blocks__left}>
+								<CheckoutCart
+									onClickCountButton={onClickCountButton}
+									removeCartItem={removeCartItem}
+									loading={loading}
+									items={items}
+								/>
+								<CheckoutFormPersonal />
+								<CheckoutFormAddress />
+							</div>
 
-						<div className={s.checkoutPage__blocks__right}>
-							<CheckoutSidebar
-								totalAmount={totalAmount}
-								loading={loading || submitting}
-							/>
+							<div className={s.checkoutPage__blocks__right}>
+								<CheckoutSidebar
+									totalAmount={totalPrice}
+									loading={loading || submitting}
+								/>
+							</div>
 						</div>
-					</div>
-				</form>
-			</FormProvider>
+					</form>
+				</FormProvider>
+			)}
+
+			{items.length === 0 && <CartEmpty />}
 		</Container>
 	)
 }
