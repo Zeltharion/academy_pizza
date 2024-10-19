@@ -1,6 +1,10 @@
 .adminOrdersTable {
 	@apply flex flex-col gap-5 w-full;
 
+	tr {
+		@apply cursor-pointer;
+	}
+
 	.adminOrdersTable__header {
 		@apply flex items-center justify-between;
 	}
