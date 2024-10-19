@@ -13,24 +13,26 @@ import { adminOnUploadSuccess, adminOnUploadError, adminOnClickRemoveImage } fro
 import urls from "@/shared/config/urls";
 
 interface IAdminFormCreateProduct {
-	values?: Product & { category: Category };
+	values?: Product
+	category: Category[];
 }
 
-export const AdminFormCreateProduct: React.FC<IAdminFormCreateProduct> = ({ values }) => {
+export const AdminFormCreateProduct: React.FC<IAdminFormCreateProduct> = ({ values, category }) => {
 	const params = useParams<{ id: string }>();
 	const router = useRouter();
 	const [loading, setLoading] = useState(false)
 
-	const categoryItems = values?.category ? [{
-		value: String(values.category.id),
-		label: values.category.name
-	}] : [];
+	const categoryItems = category.map((category) => ({
+		value: String(category.id),
+		label: category.name
+	}));
 
 	const form = useForm<TCreateProductFormValues>({
 		defaultValues: {
 			name: values?.name || "",
 			imageUrl: values?.imageUrl || "",
 			category: String(values?.categoryId),
+			description: values?.description || "",
 		},
 		resolver: zodResolver(createProductFormSchema),
 	});
@@ -55,7 +57,7 @@ export const AdminFormCreateProduct: React.FC<IAdminFormCreateProduct> = ({ valu
 				router.push(urls.admin_products);
 			}
 
-			console.log(data);
+			toast.success(`Продукт ${data.name} создан`, { icon: "✅" });
 		} catch (error) {
 			console.log("[CREATE_PRODUCT] Error: ", error);
 			toast.error("Произошла ошибка");
@@ -91,8 +93,17 @@ export const AdminFormCreateProduct: React.FC<IAdminFormCreateProduct> = ({ valu
 					label="Категория"
 					placeholder="Выберите категорию..."
 					items={categoryItems}
+					onValueChange={() => form.trigger('category')}
 					required
 				/>
+				{form.getValues('category') !== '1' ? (
+					<FormInput
+						name="description"
+						label="Добавьте описание"
+						placeholder="Введите описание продукта"
+					/>
+				) : null}
+
 			</div>
 			<div className="flex items-center justify-center">
 				<AdminImageUploader
