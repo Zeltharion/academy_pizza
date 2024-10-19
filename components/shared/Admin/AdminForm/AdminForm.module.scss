@@ -1,5 +1,13 @@
 .adminForm__wrapper {
 	@apply flex flex-col justify-between;
+
+	.adminForm__description {
+		@apply flex gap-2 items-start text-neutral-400 mb-5 text-sm;
+
+		>svg {
+			@apply text-black;
+		}
+	}
 	
 	.adminForm {
 		@apply grid md:grid-cols-2 gap-5 p-10 border rounded-lg;
