@@ -4,7 +4,7 @@ import { cookies } from "next/headers";
 import { prisma } from "@/prisma/prismaClient";
 import { OrderStatus, Prisma } from "@prisma/client";
 import { EmailTemplatePayment, EmailTemplateVerificationCode } from "@/components/shared";
-import { TCheckoutFormValues } from "@/shared/constants";
+import { DELIVERY_PRICE, TAX, TCheckoutFormValues } from "@/shared/constants";
 import { createPayment, sendEmail } from "@/shared/lib";
 import { getUserSession } from "@/shared/lib/getUserSession";
 import { hashSync } from "bcrypt";
@@ -42,6 +42,9 @@ export async function createOrder(data: TCheckoutFormValues) {
 		if (!userCart) { throw new Error('Cart not found'); }
 		if (userCart?.totalAmount === 0) { throw new Error('Cart is empty'); }
 
+		const taxPrice = Math.floor((userCart.totalAmount * TAX) / 100);
+		const totalPrice = userCart.totalAmount + taxPrice + DELIVERY_PRICE;
+
 		const order = await prisma.order.create({
 			data: {
 				token: cartToken,
@@ -50,7 +53,7 @@ export async function createOrder(data: TCheckoutFormValues) {
 				phone: data.phone,
 				address: data.address,
 				comment: data.comment,
-				totalAmount: userCart.totalAmount,
+				totalAmount: totalPrice,
 				status: OrderStatus.PENDING,
 				items: JSON.stringify(userCart.items)
 			}
