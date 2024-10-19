@@ -21,6 +21,7 @@ export const createProductVariantFormSchema = z.object({
 export const createProductFormSchema = z.object({
 	name: adminNameSchema,
 	imageUrl: adminImageUrlSchema,
+	description: z.string().optional(),
 	category: z.string().min(1, { message: 'Выберите категорию' }),
 });
 
