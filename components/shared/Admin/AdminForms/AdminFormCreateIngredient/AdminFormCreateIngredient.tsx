@@ -47,7 +47,7 @@ export const AdminFormCreateIngredient: React.FC<IAdminFormCreateIngredient> = (
 				router.push(urls.admin_ingredients);
 			}
 
-			console.log(data);
+			toast.success(`Ингредиент ${data.name} создан`, { icon: "✅" });
 		} catch (error) {
 			console.log("[CREATE_INGREDIENT] Error: ", error);
 			toast.error("Произошла ошибка");

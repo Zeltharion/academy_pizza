@@ -62,7 +62,7 @@ export const AdminFormCreateProductVariant: React.FC<IAdminFormCreateProductVari
 				router.push(urls.admin_products);
 			}
 
-			console.log(data);
+			toast.success('Вариация продукта с создана', { icon: '✅' });
 		} catch (error) {
 			console.log('[CREATE_PRODUCT_VARIANT] Error: ', error);
 			toast.error('Произошла ошибка');
