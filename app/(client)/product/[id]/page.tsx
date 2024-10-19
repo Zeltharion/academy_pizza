@@ -30,13 +30,38 @@ export default async function ProductPage({ params: { id } }: { params: { id: st
 
 	if (!product) return notFound();
 
+	const relatedProducts = await prisma.product.findMany({
+		where: {
+			categoryId: product.category.id,
+			id: { not: product.id },
+		},
+		include: {
+			ingredients: true,
+			category: {
+				include: {
+					products: {
+						include: {
+							variants: true,
+						},
+					},
+				},
+			},
+			variants: {
+				orderBy: {
+					createdAt: 'desc',
+				},
+			}
+		},
+	});
+
+
 	return (
 		<Container className={s.productCard}>
-			<ProductFormsContainer product={product} className={s.productCard__forms}/>
+			<ProductFormsContainer product={product} className={s.productCard__forms} />
 			<ProductsGroupList
 				title="Попробуйте также"
-				categoryId={product.category.id}
-				items={(product.category.products as IProductWithRelations[]).filter((p) => p.id !== product.id)}
+				categoryId={relatedProducts.map((product) => product.categoryId)[0]}
+				items={relatedProducts as IProductWithRelations[]}
 				listClassName={s.recommendations__list}
 			/>
 		</Container>
