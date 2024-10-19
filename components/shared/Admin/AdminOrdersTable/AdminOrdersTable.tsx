@@ -89,6 +89,12 @@ export const AdminOrdersTable: React.FC = () => {
 		},
 	})
 
+	const handleOnClickDeleteOrder = () => {
+		setIsLoading(true);
+		table.getAllColumns().map((column) => column);
+		setIsLoading(false);
+	}
+
 	return (
 		<div className={s.adminOrdersTable}>
 			<div className={s.adminOrdersTable__header}>
@@ -103,8 +109,9 @@ export const AdminOrdersTable: React.FC = () => {
 				<div className="flex gap-2">
 					{table.getSelectedRowModel().flatRows.length > 0 && (
 						<AdminDeleteButton
-							id={table.getSelectedRowModel().flatRows.map((row) => row.original.id) as number[]}
-							type="order"
+							id={table.getSelectedRowModel().flatRows.map((row) => row.original.id)}
+							type="orders"
+							onClick={handleOnClickDeleteOrder}
 						/>
 					)}
 					<DropdownMenu>

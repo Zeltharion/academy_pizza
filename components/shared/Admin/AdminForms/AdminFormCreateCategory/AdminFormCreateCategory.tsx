@@ -36,6 +36,7 @@ export const AdminFormCreateCategory: React.FC<IAdminFormCreateCategory> = ({ va
 			} else {
 				await createCategory(data);
 				router.push(urls.admin_categories);
+				form.reset();
 			}
 
 			toast.success(`Категория ${data.name} создана`, { icon: '✅' });
