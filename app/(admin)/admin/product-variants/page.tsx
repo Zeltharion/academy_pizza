@@ -25,7 +25,13 @@ export default async function AdminProducVariants() {
 		return redirect(urls.notFound)
 	}
 
+	const products = await prisma.product.findMany({
+		include: {
+			variants: true
+		}
+	})
+
 	return (
-		<AdminFormCreateProductVariant products={[]}/>
+		<AdminFormCreateProductVariant products={products}/>
 	)
 }
