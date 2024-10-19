@@ -3,9 +3,8 @@ import GitHubProvider from 'next-auth/providers/github'
 import GoogleProvider from 'next-auth/providers/google'
 import CredentialsProvider from "next-auth/providers/credentials";
 import { prisma } from "@/prisma/prismaClient";
-import { compare } from "bcrypt";
+import { compare, hashSync } from "bcrypt";
 import { UserRole } from "@prisma/client";
-import argon2 from "argon2";
 
 export const authOptions: AuthOptions = {
 	providers: [
@@ -96,13 +95,7 @@ export const authOptions: AuthOptions = {
 					data: {
 						email: user.email,
 						fullName: user.name || "Пользователь #" + user.id,
-						password: await argon2.hash(user.id.toString(), {
-							type: argon2.argon2id,
-							hashLength: 32,
-							salt: Buffer.from(process.env.NEXTAUTH_SECRET!),
-							parallelism: 4,
-							timeCost: 4,
-						}),
+						password: hashSync(user.id.toString(), 10),
 						verified: new Date(),
 						provider: account?.provider,
 						providerId: account?.providerAccountId,
