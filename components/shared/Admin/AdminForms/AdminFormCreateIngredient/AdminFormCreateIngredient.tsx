@@ -45,6 +45,7 @@ export const AdminFormCreateIngredient: React.FC<IAdminFormCreateIngredient> = (
 			} else {
 				await createIngredient(fields);
 				router.push(urls.admin_ingredients);
+				form.reset();
 			}
 
 			toast.success(`Ингредиент ${data.name} создан`, { icon: "✅" });

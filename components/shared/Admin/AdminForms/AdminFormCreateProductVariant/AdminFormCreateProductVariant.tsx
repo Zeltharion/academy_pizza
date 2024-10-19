@@ -59,7 +59,8 @@ export const AdminFormCreateProductVariant: React.FC<IAdminFormCreateProductVari
 				await updateProductVariant(+params.id, fields);
 			} else {
 				await createProductVariant(fields);
-				router.push(urls.admin_products);
+				router.push(urls.admin_product_variants);
+				form.reset();
 			}
 
 			toast.success('Вариация продукта с создана', { icon: '✅' });

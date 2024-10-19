@@ -23,10 +23,10 @@ export const AdminFormCreateProduct: React.FC<IAdminFormCreateProduct> = ({ valu
 	const [loading, setLoading] = useState(false)
 
 	const categoryItems = category.map((category) => ({
-		value: String(category.id),
+		value: category.id.toString(),
 		label: category.name
 	}));
-
+	
 	const form = useForm<TCreateProductFormValues>({
 		defaultValues: {
 			name: values?.name || "",
@@ -55,12 +55,15 @@ export const AdminFormCreateProduct: React.FC<IAdminFormCreateProduct> = ({ valu
 			} else {
 				await createProduct(fields);
 				router.push(urls.admin_products);
+				form.reset();
 			}
 
+			console.log(data);
 			toast.success(`Продукт ${data.name} создан`, { icon: "✅" });
 		} catch (error) {
 			console.log("[CREATE_PRODUCT] Error: ", error);
 			toast.error("Произошла ошибка");
+			console.log(data);
 		} finally {
 			setLoading(false);
 		}
@@ -79,6 +82,7 @@ export const AdminFormCreateProduct: React.FC<IAdminFormCreateProduct> = ({ valu
 			isEdit={!!values}
 			loading={loading}
 			deleteId={Number(params.id)}
+			description="При создании продукта обязательно должна быть создана хотябы одна вариация продукта."
 			type={'product'}
 		>
 			<div className="grid grid-cols-subgrid gap-5">
@@ -93,17 +97,13 @@ export const AdminFormCreateProduct: React.FC<IAdminFormCreateProduct> = ({ valu
 					label="Категория"
 					placeholder="Выберите категорию..."
 					items={categoryItems}
-					onValueChange={() => form.trigger('category')}
 					required
 				/>
-				{form.getValues('category') !== '1' ? (
-					<FormInput
-						name="description"
-						label="Добавьте описание"
-						placeholder="Введите описание продукта"
-					/>
-				) : null}
-
+				<FormInput
+					name="description"
+					label="Добавьте описание"
+					placeholder="Введите описание продукта"
+				/>
 			</div>
 			<div className="flex items-center justify-center">
 				<AdminImageUploader
