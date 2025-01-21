@@ -7,6 +7,8 @@
 [![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)](https://sass-lang.com)
 [![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)](https://www.prisma.io)
 [![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
+
+[![CodeFactor](https://www.codefactor.io/repository/github/zeltharion/academy_pizza/badge)](https://www.codefactor.io/repository/github/zeltharion/academy_pizza)
 ## Install and run:
 ```bash
 npm i && npm run dev
